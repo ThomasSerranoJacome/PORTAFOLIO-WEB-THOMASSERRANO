@@ -1,32 +1,99 @@
-# Thomas Serrano Jácome — Portafolio Web 2026
+# Thomas Serrano Jácome · Portafolio interactivo
 
-Portafolio personal interactivo, responsive y escrito con **HTML, CSS y JavaScript puro**. Incluye una pequeña experiencia arcade llamada **Bug Hunt**.
+![Tecnologías](https://img.shields.io/badge/HTML5-CSS3%20%7C%20JavaScript-5066de?style=flat-square)
+![Estado](https://img.shields.io/badge/Estado-en%20desarrollo-7c57ed?style=flat-square)
 
-## Tecnologías
+Portafolio web personal de **Thomas Serrano Jácome**, estudiante de Desarrollo de Software en **Campuslands**, Bucaramanga, Colombia. Presento proyectos reales, habilidades, servicios que me interesan desarrollar y un minijuego hecho desde cero.
 
-- HTML5 semántico y accesible
-- CSS3 (Grid, Flexbox, animaciones, diseño responsive)
-- JavaScript sin frameworks ni dependencias
+> **Identidad visual (2026):** brutalismo digital moderno con negro, azul eléctrico, blanco y morado. Tipografía expresiva, bordes definidos, tarjetas llamativas y animaciones ligeras. La nueva versión sustituye el diseño anterior sin perder su historial de Git.
 
-## Cómo verlo
+## ✨ ¿Qué encontrarás?
 
-Abre `index.html` en un navegador. No requiere instalación, npm ni servidor. Para desarrollo local puedes usar la extensión **Live Server** de Visual Studio Code.
+| Sección | Contenido |
+| --- | --- |
+| Inicio | Presentación, identidad visual y acceso a los proyectos |
+| Sobre mí | Perfil y motivaciones de aprendizaje |
+| Proyectos | Ejemplos de trabajos alojados en mi propio GitHub |
+| Habilidades | Tecnologías utilizadas y herramientas en aprendizaje |
+| Servicios | Áreas de desarrollo e intereses profesionales |
+| TSJ Arcade | **Bug Hunt**, juego interactivo de ideas y bugs |
+| Contacto | Correo y perfil de GitHub |
 
-## Secciones
+### Proyectos enlazados
 
-Inicio, Sobre mí, Proyectos, Stack, Servicios, TSJ Arcade y Contacto. Los proyectos enlazan a repositorios públicos reales del perfil de GitHub.
+- [MatchUp — catálogo web de camisetas](https://github.com/ThomasSerranoJacome/MatchUp-Pagina-Web-)
+- [Acme School — plataforma de exámenes](https://github.com/ThomasSerranoJacome/ProyectoAcmeschool_JavaScript_Ca-izares_Serrano_Carvajal)
+- [Pokédex — consumo de PokéAPI](https://github.com/ThomasSerranoJacome/POKEMON-WEB)
+- [JavaScript Lab — ejercicios interactivos](https://github.com/ThomasSerranoJacome/Pagina-Web-with-JS)
 
-## Publicación con GitHub Pages
+Los enlaces anteriores apuntan a repositorios existentes; el sitio no atribuye experiencia laboral o certificaciones no verificadas.
 
-En el repositorio, entra a **Settings → Pages → Build and deployment** y elige **Deploy from a branch**, rama **main** y carpeta **/(root)**. Guarda los cambios. Después de desplegar, el sitio estará disponible en la URL de GitHub Pages del repositorio.
+## 🕹️ TSJ Arcade: Bug Hunt
 
-## Personalización
+El visitante controla un personaje **</>** sobre un tablero de 9 × 7 casillas. Debe reunir **5 ideas ✦** y evitar los bugs **✕**, con un máximo de **3 vidas**.
 
-- `index.html`: textos, proyectos, enlaces y contacto.
-- `styles.css`: colores, tipografía y diseño responsive (variables definidas al inicio).
-- `main.js`: menú móvil, animaciones y minijuego Bug Hunt.
+- Teclado: flechas o **WASD**.
+- Móvil: controles táctiles.
+- Botón de iniciar/reiniciar, marcador y mensajes de victoria o derrota.
+- Todo el juego está escrito en JavaScript puro.
 
-## Autor
+## 🧰 Tecnologías
 
-**Thomas Serrano Jácome** · Bucaramanga, Colombia  
-[GitHub](https://github.com/ThomasSerranoJacome) · [Email](mailto:thomasserranojacome@gmail.com)
+**HTML5, CSS3 y JavaScript vanilla.** No requiere React, Node.js, npm, dependencias externas de JavaScript, base de datos ni compilación. Se utilizan fuentes de Google Fonts opcionales.
+
+## 📂 Estructura principal
+
+```text
+PORTAFOLIO-WEB-THOMASSERRANO/
+├── index.html       # Sitio, secciones, proyectos y metadatos
+├── styles.css       # Diseño, colores, animaciones y responsive
+├── main.js          # Navegación, scroll y juego Bug Hunt
+└── README.md        # Documentación
+```
+
+**Nota:** el repositorio se reutilizó por decisión de continuidad. Es posible que conserve recursos del proyecto anterior que no sean necesarios para la nueva portada; el sitio principal usa los archivos listados aquí. Antes del rediseño se creó la rama de respaldo [`backup-antes-rediseño-2026`](../../tree/backup-antes-rediseño-2026) para preservar la versión anterior.
+
+## 🚀 Cómo ejecutarlo
+
+1. Clona este repositorio o descarga los archivos.
+2. Abre la carpeta en Visual Studio Code.
+3. Abre `index.html` en el navegador o usa **Live Server**.
+4. Explora las secciones e inicia **Bug Hunt** al final.
+
+No es necesario instalar paquetes.
+
+## 🌐 Publicación en GitHub Pages
+
+Para habilitar el despliegue estático:
+
+1. Ve a **Settings → Pages** dentro del repositorio.
+2. En **Build and deployment**, selecciona **Deploy from a branch**.
+3. Configura la rama **main** y la carpeta **/(root)**.
+4. Guarda y comprueba el enlace que GitHub Pages muestre tras publicar.
+
+La URL esperada, **una vez activado y completado el despliegue**, es:
+
+https://thomasserranojacome.github.io/PORTAFOLIO-WEB-THOMASSERRANO/
+
+El hecho de que la URL esté escrita aquí **no confirma que GitHub Pages ya esté habilitado**.
+
+## 🎨 Personalización
+
+- **Colores:** variables CSS `--ink`, `--paper`, `--cream`, `--lime` (acento morado) y `--orange` (acento azul; nombre técnico heredado). Los nombres se conservaron para no romper estilos.
+- **Textos y enlaces de proyectos:** `index.html`.
+- **Juego e interacciones:** `main.js`.
+- **Responsive y efectos:** `styles.css`.
+
+Los cambios de este rediseño son independientes de los demás repositorios y no alteran los proyectos enlazados.
+
+## ✉️ Autor y contacto
+
+**Thomas Serrano Jácome**  
+Estudiante de Desarrollo de Software | Bucaramanga, Colombia
+
+- [GitHub](https://github.com/ThomasSerranoJacome)
+- [Correo electrónico](mailto:thomasserranojacome@gmail.com)
+
+---
+
+*Proyecto personal en evolución · 2026.*
