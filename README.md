@@ -5,7 +5,7 @@
 
 Portafolio web personal de **Thomas Serrano Jácome**, estudiante de Desarrollo de Software en **Campuslands**, Bucaramanga, Colombia. Presento proyectos reales, habilidades, servicios que me interesan desarrollar y un minijuego hecho desde cero.
 
-> **Identidad visual (2026):** brutalismo digital sobrio en negro, azul navy y blanco, con morado muy discreto. Titulares industriales, bloques definidos, tarjetas oscuras y animaciones ligeras. La nueva versión sustituye el diseño anterior sin perder su historial de Git.
+> **Identidad visual (noviembre 2026):** negro profundo, azul eléctrico y blanco, con acentos morados puntuales. Presentación editorial de alto contraste y tarjetas oscuras, sin ilustraciones decorativas.
 
 ## ✨ ¿Qué encontrarás?
 
@@ -19,14 +19,14 @@ Portafolio web personal de **Thomas Serrano Jácome**, estudiante de Desarrollo 
 | TSJ Arcade | **Bug Hunt**, juego interactivo de ideas y bugs |
 | Contacto | Correo y perfil de GitHub |
 
-### Proyectos enlazados
+### Proyectos destacados
 
-- [MatchUp — catálogo web de camisetas](https://github.com/ThomasSerranoJacome/MatchUp-Pagina-Web-)
-- [Acme School — plataforma de exámenes](https://github.com/ThomasSerranoJacome/ProyectoAcmeschool_JavaScript_Ca-izares_Serrano_Carvajal)
-- [Pokédex — consumo de PokéAPI](https://github.com/ThomasSerranoJacome/POKEMON-WEB)
-- [JavaScript Lab — ejercicios interactivos](https://github.com/ThomasSerranoJacome/Pagina-Web-with-JS)
+1. **Campus Pulse** — hackatón colaborativa de Campuslands. Mapa de espacios, reservas, recursos, incidencias y apoyo de IA. Mi responsabilidad, según el README del equipo, fue trabajar en **datos oficiales y pruebas de datos y fechas**. El repositorio de `250930/HAKATON_CAMPSULAND` es **privado** y por ello no se publica un enlace externo inaccesible.
+2. [Acme School — plataforma de exámenes](https://github.com/ThomasSerranoJacome/ProyectoAcmeschool_JavaScript_Ca-izares_Serrano_Carvajal) — aporté gestión de usuarios y gestión de exámenes.
+3. [Cola Virtual — sistema web de turnos](https://github.com/ThomasSerranoJacome/n8n-workflow) — interfaz para solicitudes y consultas de turnos.
+4. [MatchUp — catálogo de camisetas](https://github.com/ThomasSerranoJacome/MatchUp-Pagina-Web-) — proyecto frontend.
 
-Los enlaces anteriores apuntan a repositorios existentes; el sitio no atribuye experiencia laboral o certificaciones no verificadas.
+Los enlaces a repositorios públicos son reales. Los componentes gráficos de la portada son **representaciones ilustrativas**, no capturas del sistema en producción.
 
 ## 🕹️ TSJ Arcade: Bug Hunt
 
@@ -106,3 +106,8 @@ Estudiante de Desarrollo de Software | Bucaramanga, Colombia
 - **Space Mono:** etiquetas técnicas y elementos de interfaz.
 - **Paleta más sobria:** fondos navy y grafito, texto blanco, acentos desaturados y menos colores diferentes entre proyectos.
 - Se mantiene íntegra la lógica de **TSJ Arcade / Bug Hunt** y los enlaces de proyectos.
+
+
+## Revisión de diseño · V4
+
+La última revisión incrementa el contraste sin saturar: fondo casi negro, secciones navy, acento azul eléctrico y toques morados. Elimina dibujos flotantes y reemplaza la ilustración principal por un panel tipográfico «TSJ». Prioriza Campus Pulse y proyectos de software sobre ejemplos pequeños. Mantiene el minijuego **Bug Hunt** sin cambiar su lógica.
