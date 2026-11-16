@@ -5,7 +5,7 @@
 
 Portafolio web personal de **Thomas Serrano Jácome**, estudiante de Desarrollo de Software en **Campuslands**, Bucaramanga, Colombia. Presento proyectos reales, habilidades, servicios que me interesan desarrollar y un minijuego hecho desde cero.
 
-> **Identidad visual (2026):** brutalismo digital moderno con negro, azul eléctrico, blanco y morado. Tipografía expresiva, bordes definidos, tarjetas llamativas y animaciones ligeras. La nueva versión sustituye el diseño anterior sin perder su historial de Git.
+> **Identidad visual (2026):** brutalismo digital sobrio en negro, azul navy y blanco, con morado muy discreto. Titulares industriales, bloques definidos, tarjetas oscuras y animaciones ligeras. La nueva versión sustituye el diseño anterior sin perder su historial de Git.
 
 ## ✨ ¿Qué encontrarás?
 
@@ -97,3 +97,12 @@ Estudiante de Desarrollo de Software | Bucaramanga, Colombia
 ---
 
 *Proyecto personal en evolución · 2026.*
+
+
+## Actualización visual · noviembre de 2026
+
+- **Barlow Condensed (800):** encabezados grandes y nombres de proyectos, con una estética editorial más firme.
+- **Inter:** textos y navegación más limpios.
+- **Space Mono:** etiquetas técnicas y elementos de interfaz.
+- **Paleta más sobria:** fondos navy y grafito, texto blanco, acentos desaturados y menos colores diferentes entre proyectos.
+- Se mantiene íntegra la lógica de **TSJ Arcade / Bug Hunt** y los enlaces de proyectos.
