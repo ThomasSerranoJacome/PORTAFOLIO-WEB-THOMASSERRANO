@@ -111,3 +111,127 @@ body {background:#090e20;}
 @media(prefers-reduced-motion:reduce){
   .hero .btn-dark:hover {box-shadow:6px 6px 0 #7555eb;}
 }
+
+
+/* ─── V2: tipografía editorial / sobriedad premium ───
+   Titulares industriales + lectura neutra + detalles monoespaciados.
+   Sin cambios en la lógica del videojuego ni enlaces a proyectos.
+*/
+:root{
+  --title:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+  --body:'Inter',Arial,sans-serif;
+  --mono:'Space Mono',monospace;
+  --ink:#0c1322;
+  --paper:#101827;
+  --cream:#f6f8fc;
+  --lime:#7464ba;
+  --orange:#4d79ba;
+}
+body{background:#101827;}
+.hero{
+  background:radial-gradient(ellipse at 78% 38%,rgba(60,64,106,.16),transparent 45%),
+    linear-gradient(135deg,#090e19,#111d2f 66%,#0a1220);
+  border-bottom:1px solid #384563;
+}
+.hero h1{
+  font-family:var(--title);
+  font-size:clamp(78px,10.5vw,168px);
+  font-weight:800;
+  line-height:.82;
+  letter-spacing:-.036em;
+  text-transform:uppercase;
+  margin:27px 0 32px;
+}
+.display-title{
+  font-family:var(--title);
+  font-size:clamp(65px,8vw,132px);
+  font-weight:800;
+  line-height:.87;
+  letter-spacing:-.025em;
+  text-transform:uppercase;
+}
+.display-title em{font-style:normal;color:#d5def5;}
+.hero .word-highlight:before{
+  background:rgba(106,125,176,.45);
+  transform:none;
+  height:10%;
+  bottom:-3%;
+  left:0;
+  right:0;
+  border-radius:0;
+}
+.hero .highlight-spark,.hero .float-sticker,.scribble,.arcade-spark{display:none;}
+.hero .hero-stop{color:#8d95b4;}
+.hero .eyebrow,.eyebrow{font-weight:700;letter-spacing:.07em;}
+.hero .asterisk{color:#7a89b2;font-size:16px;}
+.hero-description{color:#c4cee0;line-height:1.7;max-width:500px;}
+.hero .hero-visual-grid{opacity:.45;}
+.hero .orbit-ring-one{background:#263650;box-shadow:12px 13px 0 #2d4168;}
+.hero .orbit-ring{border-color:#b3bfd3;}
+.hero .orbit-core{color:#f5f7fa;}
+.hero .float-tag{background:#162034;color:#e2eaf7;border:1px solid #4b5872;box-shadow:3px 3px 0 #101728;}
+.hero .float-tag span{color:#8299c4;}
+.hero .float-code{background:#101a2b;border:1px solid #435472;box-shadow:5px 5px 0 #17223b;}
+.hero .btn-dark{box-shadow:4px 4px 0 #3a4b72;border-radius:2px;}
+.hero .btn-dark:hover{box-shadow:6px 6px 0 #4f638f;}
+.nav-contact{background:#253651;border:1px solid #667797;border-radius:2px;}
+.brand-type,.nav-links>a{font-family:var(--body);letter-spacing:.015em;}
+.brand-mark{border-radius:2px;}
+.topbar{border-bottom:1px solid #2d3a55;box-shadow:none;}
+.marquee{background:#1d2b44;color:#e2e8f5;border-color:#354767;padding:15px 0;}
+.marquee-track span{font-family:var(--title);font-weight:700;font-size:clamp(23px,3vw,36px);letter-spacing:.015em;}
+.marquee-track i{color:#8095bc;font-size:18px;}
+.about{background:#0d1421;}
+.projects{background:#131d2d;color:#f5f7fc;}
+.skills{background:#172236;color:#f5f7fc;}
+.services{background:#101827;}
+.arcade{background:#101a2a;color:#f5f7fc;}
+.contact{background:#0b1220;}
+.dark-title{color:#f4f6fc;}
+.outline-word{-webkit-text-stroke:1.4px #a2b0ca;color:transparent;}
+.section-kicker{color:#9babc9;border-color:#40506d;}
+.light-kicker{color:#aab8d3;border-color:#43536c;}
+.section-heading-row>p,.skills-intro,.arcade-head p:last-child{color:#b9c6dc;}
+.project-info h3,.service-item h3,.game-left h3{
+  font-family:var(--title);
+  font-weight:800;
+  letter-spacing:-.012em;
+}
+.project-info h3{font-size:clamp(35px,3.6vw,51px);}
+.project-number,.project-info p,.skill-label{color:#acbad2;}
+.project-info{border-color:#3b4962;}
+.project-tags span{border-color:#53637d;color:#d9e3f2;}
+.project-arrow{border-color:#8493ac;color:#eff3fa;}
+.project-card:hover .project-arrow{background:#344669;color:#fff;}
+.project-preview{border:1px solid #485a7a;box-shadow:5px 5px 0 #253450;filter:saturate(.7);}
+.project-card:hover .project-preview{box-shadow:8px 8px 0 #425678;filter:saturate(.9);}
+.match-preview{background:#1b335b;color:#f3f6fc;}
+.match-title span{color:#c3d6ee;}
+.school-preview{background:#313d58;}
+.school-window{box-shadow:12px 12px 0 #182642;}
+.pokemon-preview{background:#2c4865;color:#f7f9ff;}
+.js-preview{background:#2b3755;color:#f7f9ff;}
+.js-bracket span{background:#111c30;color:#b7c5df;}
+.js-terminal span{color:#a8bedb;}
+.skill-chips>span{background:#1e2c43;color:#f2f5fd;border:1px solid #495e80;box-shadow:none;}
+.skill-chips small{color:#b5c5de;}
+.hand-drawn{color:#aab9d5;text-decoration-thickness:2px;}
+.btn-outline{border:1px solid #687995;color:#edf2fa;border-radius:2px;}
+.game-shell{background:#0d1524;color:#f0f4fc;border:1px solid #4a5b75;box-shadow:7px 7px 0 #2e4162;border-radius:2px;}
+.game-title,.game-stats strong,.game-message{color:#b5c6e8;}
+.game-left h3 span{color:#a9b9d5;}
+.btn-lime{background:#dce6f4;color:#101a2e;}
+.cell.idea{color:#c1cdec;text-shadow:0 0 9px #7491c588;}
+.cell.bug{color:#b48fc4;text-shadow:none;}
+.footer{background:#0b1220;color:#bdc9da;border-top:1px solid #354763;}
+@media(max-width:760px){
+  .hero h1{font-size:clamp(67px,13vw,109px);letter-spacing:-.028em;}
+  .display-title{font-size:clamp(58px,12vw,94px);}
+  .nav-links{background:#0c1525;border-bottom:1px solid #506182;}
+  .marquee{padding:13px 0;}
+  .project-preview{box-shadow:4px 4px 0 #253450;}
+}
+@media(max-width:430px){
+  .hero h1{font-size:clamp(62px,13.3vw,82px);}
+  .display-title,.contact-title{font-size:clamp(53px,12vw,70px);}
+}
