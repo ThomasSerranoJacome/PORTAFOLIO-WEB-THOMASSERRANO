@@ -562,3 +562,63 @@ main>section.is-current:not(.hero) .section-kicker:after{transform:scaleX(1);}
 @media(max-width:760px){.cinema-stage{inset:0 1% 6%;box-shadow:7px 8px 0 #040b1a;}.cinema-world{inset:0 2% 4%;will-change:auto;}.cinema-orbit{width:225px;}.cinema-orbit--inner{width:190px;}.cinema-monogram{font-size:clamp(94px,25vw,130px);}.cinema-controls{bottom:0;}.cinema-enabled .cinema-controls{bottom:8px;}.cinema-enabled .cinema-scene-bottom{bottom:63px;}.cinema-scene-top,.cinema-scene-bottom{left:12px;right:12px;font-size:8px;}.cinema-floor{opacity:.35;}}
 @media(max-width:430px){.cinema-controls{gap:5px;}.cinema-toggle,.cinema-explore{padding:9px 8px;font-size:8px;}.cinema-monogram{font-size:100px;}.cinema-orbit{width:215px;}.cinema-orbit--inner{width:178px;}.cinema-scene-top span:last-child{display:none;}}
 @media(prefers-reduced-motion:reduce){.cinema-orbit{animation:none!important;}.cinema-world{transform:none!important;transition:none!important;will-change:auto!important;}.cinema-exiting .cinema-world{transform:none!important;opacity:1!important;}.cinema-stage{box-shadow:7px 8px 0 #040b1a;}}
+
+
+/* ─── V9 / CINEMATIC INTRO: grande → pequeño → revelar página ─── */
+.intro-overlay{display:none;position:fixed;inset:0;z-index:9999;overflow:hidden;isolation:isolate;align-items:center;justify-content:center;background:#030815;color:#edf4ff;}
+.intro-overlay[hidden]{display:none!important;}
+html.intro-pending .intro-overlay{display:flex;animation:introBackdrop 3.72s both;}
+html.intro-pending body{overflow:hidden;}
+/* Fallback incluso si el JS principal no se ejecuta */
+html.intro-pending body > :not(.intro-overlay){visibility:hidden;animation:introContentFallback .01s 3.12s forwards;}
+.intro-topline{position:absolute;z-index:4;top:clamp(18px,3vw,36px);left:clamp(18px,4vw,64px);right:clamp(18px,4vw,64px);display:flex;justify-content:space-between;gap:16px;font-size:10px;letter-spacing:.12em;color:#98b8e7;}
+.intro-ambient{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 52%,#164aa076,transparent 53%),radial-gradient(ellipse at 75% 80%,#35236355,transparent 56%),linear-gradient(140deg,#020610,#08162d 68%,#040814);}
+.intro-ambient:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#7096df15 1px,transparent 1px),linear-gradient(90deg,#7096df15 1px,transparent 1px);background-size:68px 68px;mask-image:radial-gradient(ellipse at 50% 50%,#000,transparent 77%);}
+.intro-perspective{position:relative;z-index:2;width:min(560px,82vw);height:min(430px,60vh);display:grid;place-items:center;perspective:1000px;transform:translateY(-3%);}
+.intro-logo-world{position:absolute;inset:0;display:grid;place-items:center;transform-style:preserve-3d;will-change:transform,opacity;transform:scale(.06) rotateY(-58deg) rotateX(18deg);opacity:0;}
+html.intro-pending .intro-logo-world{animation:introLogoJourney 3.2s cubic-bezier(.22,.65,.22,1) both;}
+.intro-logo-world .cinema-orbit{width:290px;}
+.intro-logo-world .cinema-orbit--inner{width:230px;}
+.intro-logo-world .cinema-monogram{font-size:clamp(116px,18vw,187px);transform:translateZ(80px);}
+.intro-ambient-glow{position:absolute;width:280px;height:280px;border-radius:50%;background:#236dff82;filter:blur(75px);transform:translateZ(-110px);}
+.intro-copy{position:absolute;z-index:3;left:18px;right:18px;top:calc(50% + min(165px,19vh));text-align:center;opacity:0;}
+html.intro-pending .intro-copy{animation:introCaption 3.2s ease both;}
+.intro-copy p{font:700 clamp(8px,1vw,11px) var(--mono);letter-spacing:.14em;color:#82aaff;margin:0 0 13px;}
+.intro-copy h2{font:800 clamp(30px,6vw,72px)/.9 var(--title);letter-spacing:-.02em;margin:0 0 10px;color:#f7faff;}
+.intro-copy>span{font-size:10px;letter-spacing:.1em;color:#b2c9eb;}
+.intro-foot{position:absolute;z-index:3;left:clamp(18px,4vw,64px);bottom:clamp(25px,5vh,55px);right:clamp(18px,4vw,64px);display:flex;align-items:center;gap:17px;color:#8ca9d5;font-size:9px;letter-spacing:.08em;}
+.intro-track{display:block;width:min(240px,35vw);height:2px;background:#244373;overflow:hidden;}
+.intro-track span{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#477aff,#a0bfff);}
+html.intro-pending .intro-track span{animation:introLoad 3.05s linear both;}
+.intro-skip{position:absolute;z-index:10;right:clamp(18px,4vw,64px);bottom:clamp(60px,10vh,110px);border:1px solid #3d649d;color:#dbe9ff;background:#0a2042d9;min-height:42px;padding:10px 16px;border-radius:4px;cursor:pointer;font-size:10px;letter-spacing:.06em;transition:background .2s;}
+.intro-skip:hover{background:#224d94;color:white;}
+.intro-skip:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+@keyframes introLogoJourney{
+  0%{transform:scale(.06) rotateY(-58deg) rotateX(18deg);opacity:0;filter:blur(10px);}
+  15%{opacity:1;filter:blur(0);transform:scale(.5) rotateY(-28deg) rotateX(9deg);}
+  39%{transform:scale(1.05) rotateY(-9deg) rotateX(2deg);opacity:1;}
+  61%{transform:scale(1.62) rotateY(0) rotateX(0);opacity:1;}
+  73%{transform:scale(1.8) rotateY(0) rotateX(0);opacity:1;}
+  86%{transform:scale(.65) rotateY(7deg) rotateX(0);opacity:1;}
+  100%{transform:scale(.12) rotateY(0) rotateX(0);opacity:0;}
+}
+@keyframes introCaption{0%,20%{opacity:0;transform:translateY(14px);}38%,78%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(-15px);}}
+@keyframes introLoad{to{transform:scaleX(1);}}
+@keyframes introBackdrop{0%,81%{opacity:1;visibility:visible;pointer-events:auto;}94%{opacity:0;visibility:visible;pointer-events:none;}100%{opacity:0;visibility:hidden;pointer-events:none;}}
+@keyframes introContentFallback{to{visibility:visible;}}
+@media(max-width:760px){
+ .intro-perspective{width:96vw;height:390px;max-height:62vh;}
+ .intro-logo-world .cinema-orbit{width:230px;}
+ .intro-logo-world .cinema-orbit--inner{width:185px;}
+ .intro-logo-world .cinema-monogram{font-size:clamp(103px,25vw,143px);}
+ .intro-copy{top:calc(50% + min(124px,15vh));}
+ .intro-copy h2{font-size:clamp(35px,9vw,62px);}
+ .intro-topline{font-size:8px;letter-spacing:.04em;}
+ .intro-topline span:last-child{display:none;}
+ .intro-skip{right:18px;bottom:70px;font-size:9px;}
+ .intro-foot{bottom:22px;font-size:8px;gap:12px;}
+}
+@media(prefers-reduced-motion:reduce){
+ html.intro-pending body > :not(.intro-overlay){visibility:visible!important;animation:none!important;}
+ html.intro-pending .intro-overlay{display:none!important;animation:none!important;}
+}
