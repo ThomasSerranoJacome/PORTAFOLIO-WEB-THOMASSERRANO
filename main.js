@@ -451,12 +451,16 @@ renderGame();
   const animatedGallery = () => effectsEnabled() && desktop.matches;
 
   const skills = {
-    java: ['01 / JAVA', 'Práctica de programación orientada a objetos, lógica y estructuras. Sigo fortaleciendo mis proyectos en Java.'],
-    javascript: ['02 / JAVASCRIPT', 'Interfaces interactivas, proyectos web y lógica del navegador. Proyectos: Acme School, Cola Virtual y este portafolio.'],
-    spring: ['03 / SPRING BOOT', 'Backend en formación: creación de APIs REST, persistencia y arquitectura en Java. Todavía en proceso de aprendizaje.'],
-    sql: ['04 / SQL', 'Consultas y modelado de bases de datos como parte de mi formación y ejercicios de práctica.'],
-    ia: ['05 / IA APLICADA', 'Campus Pulse integra funciones asistidas por IA como proyecto de equipo. Mi participación fue en datos oficiales y pruebas de datos y fechas.'],
-    github: ['06 / GITHUB', 'Versionamiento, repositorios, colaboración y trabajo con ramas. Aquí puedes explorar el código real de mis proyectos.']
+    java: ['01 / JAVA', 'Programación orientada a objetos y lógica de software. Es parte de mi formación técnica y de mis ejercicios de práctica.'],
+    python: ['02 / PYTHON', 'Lenguaje que trabajo durante mi formación, aplicándolo en ejercicios y pequeños proyectos de programación.'],
+    spring: ['03 / SPRING BOOT', 'Actualmente aprendiendo a desarrollar backend con Java, APIs REST y persistencia de datos.'],
+    sql: ['04 / SQL', 'Consultas, organización y modelado de datos para aplicaciones y ejercicios de bases de datos.'],
+    javascript: ['05 / JAVASCRIPT', 'Interfaces interactivas, lógica en el navegador y proyectos web. Ejemplos: Acme School, Cola Virtual y este portafolio.'],
+    ia: ['06 / IA APLICADA', 'Exploro herramientas de inteligencia artificial aplicadas al software. En Campus Pulse participé en datos oficiales y en pruebas de datos y fechas.'],
+    pseint: ['07 / PSEINT', 'Diseño de algoritmos en pseudocódigo para practicar lógica y estructurar soluciones antes de programarlas.'],
+    scrum: ['08 / SCRUM', 'Conocimientos de trabajo ágil, organización de tareas y colaboración durante proyectos de desarrollo.'],
+    github: ['09 / GIT Y GITHUB', 'Control de versiones, repositorios y colaboración con código. Puedes visitar los proyectos públicos de mi perfil.'],
+    htmlcss: ['10 / HTML Y CSS', 'Maquetación, diseño adaptable y construcción de interfaces web con HTML5 y CSS3.']
   };
 
   function setSkill(key) {
