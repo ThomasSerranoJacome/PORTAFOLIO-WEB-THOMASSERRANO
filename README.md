@@ -212,3 +212,14 @@ A partir de las dos versiones de hoja de vida compartidas por el autor:
 - Se incorporaron las habilidades interpersonales explícitas de la hoja personal: comunicación efectiva, trabajo en equipo, adaptabilidad, aprendizaje rápido y organización.
 - Spring Boot se mantiene identificado como **en aprendizaje**, sin presentarlo como dominio experto.
 - Se conservaron enlaces, experiencia del proyecto Campus Pulse, fichas de la V11, la intro y la dinámica de scroll.
+
+
+## V13 — Identidad TSJ y herramientas
+
+- Se creó `favicon.svg`: símbolo TSJ vectorial con halo azul, optimizado para la pestaña del navegador, sin depender de imágenes externas.
+- Se reemplazó el pequeño bloque de letras TSJ del encabezado por el mismo ícono SVG, sin permitir que las letras se partan en dos renglones.
+- La sección **Mi stack tecnológico** distingue herramientas de desarrollo (NetBeans, IntelliJ IDEA, DBeaver y VS Code) de metodología y flujo (Git/GitHub, Scrum, PSeInt, IA aplicada).
+- Se muestran Spring Boot, JavaScript, PostgreSQL, MySQL y demás conocimientos del autor.
+- **Mi universo Tech** contiene ahora 15 nodos interactivos: Java, JavaScript, Python, SQL, Spring Boot, PostgreSQL, MySQL, DBeaver, PSeInt, IA aplicada, NetBeans, IntelliJ IDEA, GitHub, Scrum y HTML/CSS.
+- El mapa es una red animada en escritorio y una grilla táctil responsiva en dispositivos medianos y móviles.
+- Se conservaron intro, scroll narrativo, fichas de proyectos, centro de contacto, terminal y Bug Hunt.
