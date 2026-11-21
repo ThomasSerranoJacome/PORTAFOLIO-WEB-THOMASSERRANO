@@ -187,3 +187,17 @@ Se excluyó la propuesta de **código que se escribe durante el scroll** a petic
 - Los proyectos siguen enlazados a sus repositorios públicos; el repositorio privado del equipo de Campus Pulse no se expone.
 - Todas las tecnologías y las etapas de la demo conceptual cuentan con botones de teclado y textos alternativos accesibles.
 - El proyecto mantiene su identidad negro/azul, intro TSJ V9, escena 3D V8, TSJ Terminal y Bug Hunt.
+
+
+## V11 — Project Experience + Centro de contacto
+
+Se conservaron la portada cinematográfica, scroll interactivo, TSJ Terminal, Bug Hunt y el estilo negro/azul. Las nuevas funcionalidades son:
+
+1. **Project Experience:** cada proyecto abre una ficha inmersiva dentro de la página con descripción, participación real, etiquetas técnicas y navegación anterior/siguiente. En los proyectos públicos existe un enlace directo al repositorio, sin perderlo de la galería. En **Campus Pulse** se explica que fue un trabajo colaborativo y que el código del equipo es privado. Las portadas gráficas siguen siendo **representaciones conceptuales, no capturas reales**. Las fichas se abren y cierran con controles accesibles y admiten teclado.
+2. **Centro de contacto:** tres tipos de mensaje (contratación, colaboración y consulta), formulario con nombre, correo y descripción. **No tiene backend:** genera un enlace `mailto:` que abre el cliente de correo con asunto y cuerpo preparados. El visitante debe confirmar el envío en su aplicación. No se almacena ningún formulario ni se afirma que el correo se haya enviado.
+3. Se mantuvieron los enlaces públicos a Acme School, Cola Virtual y MatchUp y no se agregaron una línea de tiempo, modo reclutador ni un segundo reto oculto.
+
+### Edición futura
+- Los contenidos de las fichas se encuentran en el objeto `projects` dentro de `main.js`.
+- Los textos del centro de contacto se encuentran en `subjects` e `introductions`.
+- La presentación y los controles están en `index.html`, y los estilos en `styles.css`.
