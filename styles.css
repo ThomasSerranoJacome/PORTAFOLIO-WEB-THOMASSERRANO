@@ -447,3 +447,71 @@ body{background:#070c17;color:#f3f7ff;}
 @media(max-width:760px){.console-section{padding-top:75px;padding-bottom:82px;}.console-layout{padding-top:35px;}.console-shortcut-icon{width:36px;height:36px;font-size:19px;}.console-intro .display-title{font-size:clamp(56px,11vw,87px);}.terminal-window{box-shadow:4px 5px 0 #142e61;}.terminal-bar{padding:14px;}.terminal-body{padding:18px 16px;min-height:190px;}.terminal-form{padding:13px;gap:8px;}.terminal-prompt{font-size:9px;}.terminal-form input{font-size:11px;}.terminal-quick{padding:12px 13px 4px;}.terminal-help{padding:8px 13px 13px;}.terminal-bar-title{font-size:9px;}.terminal-badge{font-size:8px;}}
 @media(max-width:400px){.terminal-bar-title{max-width:140px;}.console-intro .display-title{font-size:clamp(50px,10.7vw,63px);}.terminal-prompt{font-size:8px;}.terminal-form input{font-size:10px;}}
 @media(prefers-reduced-motion:reduce){.terminal-entry{animation:none;}.terminal-quick button{transition:none;}}
+
+
+/* ============================================================
+   V7 / SCROLL STORIES — microinteracciones premium
+   ============================================================ */
+.site-progress{position:fixed;left:0;top:0;width:100%;height:3px;z-index:150;pointer-events:none;background:#111d3399;}
+.site-progress-bar{display:block;width:100%;height:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#3f83ff 0%,#75b6ff 65%,#917aff 100%);box-shadow:0 0 14px #407bff88;will-change:transform;}
+.scroll-hud{position:fixed;z-index:58;right:25px;bottom:23px;display:flex;align-items:center;gap:13px;padding:8px;border:1px solid #3c5681;background:#081629ed;box-shadow:0 10px 26px #020713bb;backdrop-filter:blur(16px);border-radius:8px;}
+.scroll-hud-current{display:grid;grid-template-columns:66px 124px;align-items:center;gap:8px;padding:0 9px;font-family:var(--mono);}
+.scroll-hud-current>span{font-size:10px;color:#85aaff;}
+.scroll-hud-current>strong{font-size:10px;letter-spacing:.07em;color:#eff4ff;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.motion-toggle{cursor:pointer;background:#193463;border:1px solid #315d9e;border-radius:4px;color:#cddfff;font:700 9px var(--mono);letter-spacing:.02em;padding:10px 9px;white-space:nowrap;transition:background .2s,border-color .2s;}
+.motion-toggle:hover{background:#2955a2;border-color:#5988dd;}
+.motion-toggle span{color:#83acff;}
+.motion-toggle[aria-pressed="false"] span{color:#b7c2d7;}
+/* Revelado progresivo sólo si JavaScript y el observador están activos. */
+.js-ready:not(.motion-paused) .motion-item:not(.motion-in){opacity:0;transform:translate3d(0,27px,0) scale(.985);}
+.motion-item{opacity:1;transform:translate3d(0,0,0) scale(1);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:var(--enter-delay,0ms);}
+.js-ready:not(.motion-paused) .motion-item.motion-from-left:not(.motion-in){transform:translate3d(-26px,5px,0);}
+.js-ready:not(.motion-paused) .motion-item.motion-from-right:not(.motion-in){transform:translate3d(26px,5px,0);}
+.js-ready:not(.motion-paused) .motion-item.motion-scale:not(.motion-in){transform:scale(.945);}
+main>section:not(.hero) .section-kicker{position:relative;}
+main>section:not(.hero) .section-kicker:after{content:"";position:absolute;bottom:-2px;left:0;height:2px;width:112px;max-width:45%;background:#5c8fff;box-shadow:0 0 13px #346ff866;transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.15,.9,.2,1);}
+main>section.is-current:not(.hero) .section-kicker:after{transform:scaleX(1);}
+.display-title .outline-word{transition:color .65s ease,-webkit-text-stroke-color .65s ease;}
+#proyectos.is-current .outline-word{color:#345ee080;-webkit-text-stroke-color:#7eabff;}
+#arcade.is-current .outline-word{color:#294bd05a;-webkit-text-stroke-color:#87aaff;}
+.identity-panel{transition:transform .3s ease;transform:translate3d(0,var(--hero-parallax,0px),0);}
+.project-preview{isolation:isolate;}
+.project-preview:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(360px circle at var(--glow-x,50%) var(--glow-y,50%),#5b98ff34,transparent 66%);opacity:0;transition:opacity .3s ease;}
+.project-preview>*{position:relative;z-index:1;}
+@media(hover:hover) and (pointer:fine){
+ .project-card:hover .project-preview:after{opacity:1;}
+ .project-card:hover .project-info h3{color:#a8c6ff;transition:color .3s;}
+ .skill-chips>span{transition:transform .25s,background .25s,border-color .25s;}
+ .skill-chips>span:hover{transform:translateY(-4px);background:#25477f;border-color:#6492ff;}
+ .service-item{transition:padding-left .28s ease,background .28s ease;}
+ .service-item:hover{padding-left:14px;background:#152a4f55;}
+}
+.project-card:nth-child(2){--enter-delay:100ms;}
+.project-card:nth-child(3){--enter-delay:170ms;}
+.project-card:nth-child(4){--enter-delay:230ms;}
+.skill-panel:nth-child(2){--enter-delay:90ms;}
+.skill-panel:nth-child(3){--enter-delay:180ms;}
+.skill-panel:nth-child(4){--enter-delay:270ms;}
+.service-item:nth-child(2){--enter-delay:100ms;}
+.service-item:nth-child(3){--enter-delay:190ms;}
+.js-ready.motion-paused .reveal:not(.is-visible){opacity:1!important;transform:none!important;}
+.js-ready.motion-paused .motion-item:not(.motion-in){opacity:1!important;transform:none!important;}
+.motion-paused .identity-panel{transform:none!important;}
+.motion-paused .project-preview:after{opacity:0!important;}
+.motion-paused *,.motion-paused *:before,.motion-paused *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important;}
+@media(max-width:1000px){.scroll-hud{bottom:15px;right:15px;}.scroll-hud-current{grid-template-columns:55px 100px;gap:4px;}.scroll-hud-current>strong{font-size:9px;}}
+@media(max-width:760px){
+ .scroll-hud{right:9px;bottom:9px;padding:4px;gap:4px;background:#081629eb;}
+ .scroll-hud-current{display:none;}
+ .motion-toggle{padding:9px 8px;font-size:9px;}
+ .site-progress{height:2px;}
+ .project-card:nth-child(n){--enter-delay:0ms;}
+ .identity-panel{transform:none!important;}
+}
+@media(prefers-reduced-motion:reduce){
+ .motion-item,.js-ready .motion-item:not(.motion-in),.js-ready .motion-item.motion-scale:not(.motion-in),.js-ready .motion-item.motion-from-left:not(.motion-in),.js-ready .motion-item.motion-from-right:not(.motion-in){opacity:1!important;transform:none!important;transition:none!important;}
+ .site-progress-bar{box-shadow:none;will-change:auto;}
+ .identity-panel{transform:none!important;}
+ .project-preview:after{display:none;}
+ .scroll-hud{backdrop-filter:none;}
+}
