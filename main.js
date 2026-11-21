@@ -588,7 +588,13 @@ renderGame();
       const rect = portal.getBoundingClientRect();
       if (rect.top > window.innerHeight * 1.1 || rect.bottom < -100) return;
       const p = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height));
-      portal.style.setProperty('--portal-progress', enabled ? p.toFixed(3) : '.55');
+      const progress = enabled ? p : .55;
+      portal.style.setProperty('--portal-progress', progress.toFixed(3));
+      portal.style.setProperty('--portal-scale', (.50 + progress * .9).toFixed(3));
+      portal.style.setProperty('--portal-inner-scale', (.38 + progress * 1.2).toFixed(3));
+      portal.style.setProperty('--portal-rotation', (progress * 55).toFixed(2) + 'deg');
+      portal.style.setProperty('--portal-inner-rotation', (progress * -85).toFixed(2) + 'deg');
+      portal.style.setProperty('--portal-opacity', (.35 + progress * .5).toFixed(3));
     });
     updateGallery();
   }
