@@ -854,3 +854,19 @@ html.intro-pending .intro-track span{animation:introLoad 3.05s linear both;}
 @media(max-width:850px){.project-detail-grid{grid-template-columns:1fr;}.project-detail-visual{position:static;min-height:290px;}.contact-paths{grid-template-columns:1fr;}.contact-path{min-height:0;gap:8px;}.contact-path strong{font-size:30px;}.project-detail-modal{max-height:94vh;}.project-detail-visual>strong{font-size:90px;}}
 @media(max-width:600px){.project-detail-modal{width:calc(100vw - 14px);max-height:97vh;}.project-detail-shell{padding:14px;}.project-detail-top{flex-wrap:wrap;font-size:9px;}.project-detail-visual{min-height:240px;padding:20px;}.project-detail-visual>strong{font-size:clamp(60px,16vw,96px);}.project-detail-visual-bottom{font-size:8px;}.project-detail-bottom{gap:7px;}.project-detail-bottom>span{display:none;}.project-detail-bottom>button{font-size:9px;padding:11px 9px;}.contact-center{padding:17px;box-shadow:5px 6px 0 #040b1b;}.contact-form-grid{grid-template-columns:1fr;}.contact-form-end{flex-direction:column;align-items:stretch;}.contact-submit{width:100%;}.project-open,.project-code-link{flex:1;font-size:9px;}.project-actions--featured{padding-bottom:20px;}}
 @media(prefers-reduced-motion:reduce){.project-detail-modal[open]{animation:none;}.contact-path:hover,.project-open:hover{transform:none;}}
+
+
+/* V12 / CV skills sync — human skills + expanded 10-node technology map */
+.people-skills{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:25px 0;margin-top:28px;border-top:1px solid #abbde5;border-bottom:1px solid #abbde5;}
+.people-skills>.mono{font-size:11px;font-weight:700;letter-spacing:.04em;color:#3c5f9e;flex:0 0 auto;}
+.people-skills>div{display:flex;flex-wrap:wrap;gap:8px;}
+.people-skills>div>span{display:inline-flex;align-items:center;background:#fff;border:1px solid #b7c8ea;color:#234170;border-radius:3px;padding:9px 12px;font:600 11px/1.4 var(--body);}
+.skill-network-map{height:clamp(380px,43vw,485px);}
+.skill-node{z-index:2;}
+.skill-node strong{font-size:clamp(13px,1.45vw,17px);}
+@media(max-width:760px){
+  .people-skills{gap:15px;padding:20px 0;margin-top:23px;}
+  .people-skills>div>span{font-size:10px;padding:8px 10px;}
+  .skill-network-map{height:auto;min-height:0;}
+  .skill-node strong{font-size:14px;}
+}
