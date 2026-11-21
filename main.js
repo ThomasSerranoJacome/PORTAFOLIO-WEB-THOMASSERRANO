@@ -415,3 +415,207 @@ renderGame();
   });
   if (!finished) skip.focus({ preventScroll: true });
 })();
+
+
+// V10 / SCROLL DIRECTOR — secciones narrativas sin librerías externas.
+(() => {
+  const clamp = (v) => Math.max(0, Math.min(1, v));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const desktop = window.matchMedia('(min-width: 1001px) and (min-height: 710px) and (pointer: fine)');
+  const hero = document.getElementById('inicio');
+  const scene = document.querySelector('#cinemaWorld');
+  const visual = document.querySelector('.hero-visual--editorial');
+  const heroCopy = document.querySelector('.hero-copy');
+  const emblem = document.getElementById('scrollEmblem');
+  const network = document.getElementById('skillNetwork');
+  const campusStory = document.getElementById('campusStory');
+  const campusPlan = campusStory?.closest('.campus-plan');
+  const campusProject = document.querySelector('.project-featured');
+  const gallery = document.getElementById('projectGallery');
+  const gallerySticky = document.getElementById('projectGallerySticky');
+  const galleryTrack = document.getElementById('projectGalleryTrack');
+  const galleryNumber = document.getElementById('projectGalleryIndex');
+  const galleryProgress = document.getElementById('projectGalleryProgress');
+  const portals = Array.from(document.querySelectorAll('[data-story-portal]'));
+  const skillButtons = Array.from(document.querySelectorAll('[data-skill-key]'));
+  const skillDetail = document.getElementById('skillNetworkDetail');
+  const campusButtons = Array.from(document.querySelectorAll('[data-campus-phase]'));
+  let campusManual = false;
+  let currentPhase = -1;
+  let galleryDistance = 0;
+  let galleryStart = 0;
+  let framePending = false;
+  let lastEffectsOn = null;
+
+  const effectsEnabled = () => !reduce.matches && !document.body.classList.contains('motion-paused');
+  const animatedGallery = () => effectsEnabled() && desktop.matches;
+
+  const skills = {
+    java: ['01 / JAVA', 'Práctica de programación orientada a objetos, lógica y estructuras. Sigo fortaleciendo mis proyectos en Java.'],
+    javascript: ['02 / JAVASCRIPT', 'Interfaces interactivas, proyectos web y lógica del navegador. Proyectos: Acme School, Cola Virtual y este portafolio.'],
+    spring: ['03 / SPRING BOOT', 'Backend en formación: creación de APIs REST, persistencia y arquitectura en Java. Todavía en proceso de aprendizaje.'],
+    sql: ['04 / SQL', 'Consultas y modelado de bases de datos como parte de mi formación y ejercicios de práctica.'],
+    ia: ['05 / IA APLICADA', 'Campus Pulse integra funciones asistidas por IA como proyecto de equipo. Mi participación fue en datos oficiales y pruebas de datos y fechas.'],
+    github: ['06 / GITHUB', 'Versionamiento, repositorios, colaboración y trabajo con ramas. Aquí puedes explorar el código real de mis proyectos.']
+  };
+
+  function setSkill(key) {
+    const data = skills[key];
+    if (!data || !skillDetail) return;
+    skillButtons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.skillKey === key)));
+    const tag = skillDetail.querySelector('.mono');
+    const description = skillDetail.querySelector('p');
+    if (tag) tag.textContent = data[0];
+    if (description) description.textContent = data[1];
+  }
+  skillButtons.forEach((button) => button.addEventListener('click', () => setSkill(button.dataset.skillKey)));
+
+  const campusStates = [
+    { title: 'ESPACIOS / VISTA GENERAL', detail: 'Consulta visual de salas, estados y capacidades.' },
+    { title: 'RESERVAS / SALAS SELECCIONADAS', detail: 'Dos salas resaltadas como ejemplo de solicitudes de reserva.' },
+    { title: 'INCIDENCIAS / ALERTA SIMULADA', detail: 'Un espacio marcado con incidencia para ilustrar su gestión.' }
+  ];
+  function setCampusPhase(number) {
+    const phase = Math.min(2, Math.max(0, number));
+    if (!campusPlan || phase === currentPhase) return;
+    currentPhase = phase;
+    campusPlan.dataset.campusActive = String(phase);
+    campusButtons.forEach((button) => {
+      const selected = Number(button.dataset.campusPhase) === phase;
+      button.classList.toggle('is-selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    const status = document.getElementById('campusStoryStatus');
+    const detail = document.getElementById('campusStoryDetail');
+    if (status) status.textContent = campusStates[phase].title;
+    if (detail) detail.textContent = campusStates[phase].detail;
+  }
+  campusButtons.forEach((button) => button.addEventListener('click', () => {
+    campusManual = true;
+    setCampusPhase(Number(button.dataset.campusPhase));
+  }));
+  setCampusPhase(0);
+
+  function layoutGallery() {
+    if (!gallery || !gallerySticky || !galleryTrack) return;
+    gallery.classList.remove('is-scroll-driven');
+    gallery.style.removeProperty('height');
+    galleryTrack.style.removeProperty('--rail-x');
+    galleryDistance = 0;
+    if (!animatedGallery()) return;
+
+    // Medir en el layout normal para que el carril funcione sin JavaScript.
+    const distance = Math.ceil(galleryTrack.scrollWidth - gallerySticky.clientWidth);
+    if (distance < 50) return;
+    galleryDistance = distance;
+    const galleryHead = gallery.querySelector('.project-gallery-head');
+    const headerHeight = galleryHead ? galleryHead.getBoundingClientRect().height + 16 : 0;
+    gallery.style.height = Math.ceil(gallerySticky.offsetHeight + distance + headerHeight + 115) + 'px';
+    gallery.classList.add('is-scroll-driven');
+    galleryStart = gallery.getBoundingClientRect().top + window.scrollY + headerHeight - 96;
+  }
+
+  function updateGallery() {
+    if (!gallery || !galleryTrack || !galleryNumber) return;
+    if (gallery.classList.contains('is-scroll-driven') && galleryDistance) {
+      const amount = clamp((window.scrollY - galleryStart) / galleryDistance);
+      galleryTrack.style.setProperty('--rail-x', (-galleryDistance * amount).toFixed(1) + 'px');
+      gallery.style.setProperty('--rail-progress', Math.max(.04, amount).toFixed(3));
+      const count = galleryTrack.querySelectorAll('.project-card').length;
+      const index = Math.min(count, Math.floor(amount * count) + 1);
+      galleryNumber.textContent = String(index).padStart(2, '0') + ' / ' + String(count).padStart(2, '0');
+    } else {
+      const scrollMax = Math.max(1, gallerySticky.scrollWidth - gallerySticky.clientWidth);
+      const amount = clamp(gallerySticky.scrollLeft / scrollMax);
+      const count = galleryTrack.querySelectorAll('.project-card').length;
+      galleryNumber.textContent = String(Math.min(count, Math.floor(amount * count) + 1)).padStart(2, '0') + ' / ' + String(count).padStart(2, '0');
+      gallery.style.setProperty('--rail-progress', Math.max(.04, amount).toFixed(3));
+    }
+  }
+
+  // Al navegar con teclado, hacer accesible la tarjeta correspondiente
+  // aunque el carril se encuentre desplazado horizontalmente.
+  galleryTrack?.addEventListener('focusin', (event) => {
+    if (!gallery?.classList.contains('is-scroll-driven')) return;
+    const card = event.target.closest('.project-card');
+    if (!card) return;
+    const destination = galleryStart + Math.min(galleryDistance, Math.max(0, card.offsetLeft));
+    window.scrollTo({ top: destination, behavior: 'auto' });
+  });
+  gallerySticky?.addEventListener('scroll', () => {
+    if (!gallery?.classList.contains('is-scroll-driven')) updateGallery();
+  }, { passive:true });
+
+  function updateScrollEffects() {
+    framePending = false;
+    const enabled = effectsEnabled();
+    document.body.classList.toggle('scroll-story-active', enabled);
+
+    if (hero && scene && visual && heroCopy) {
+      const heroRect = hero.getBoundingClientRect();
+      const progress = clamp(-heroRect.top / Math.max(1, heroRect.height * .82));
+      if (enabled && window.innerWidth > 900) {
+        scene.style.setProperty('--story-scale', (1 - progress * .57).toFixed(3));
+        scene.style.setProperty('--story-y', (-progress * 54).toFixed(1) + 'px');
+        scene.style.setProperty('--story-turn', (progress * 105).toFixed(1) + 'deg');
+        visual.style.setProperty('--story-classic-scale', (1 - progress * .25).toFixed(3));
+        heroCopy.style.setProperty('--story-copy-y', (-progress * 25).toFixed(1) + 'px');
+        heroCopy.style.setProperty('--story-copy-opacity', (1 - progress * .25).toFixed(3));
+        emblem?.classList.toggle('is-visible', progress > .58 && heroRect.bottom > -window.innerHeight * .7);
+      } else {
+        scene.style.removeProperty('--story-scale');
+        scene.style.removeProperty('--story-y');
+        scene.style.removeProperty('--story-turn');
+        visual.style.removeProperty('--story-classic-scale');
+        heroCopy.style.removeProperty('--story-copy-y');
+        heroCopy.style.removeProperty('--story-copy-opacity');
+        emblem?.classList.remove('is-visible');
+      }
+    }
+    if (network) {
+      const rect = network.getBoundingClientRect();
+      const phase = clamp((window.innerHeight * .92 - rect.top) / Math.max(1, window.innerHeight * .95));
+      network.style.setProperty('--network-progress', enabled ? phase.toFixed(3) : '1');
+    }
+    if (campusStory && campusProject && !campusManual) {
+      const rect = campusProject.getBoundingClientRect();
+      if (rect.top < window.innerHeight * .92 && rect.bottom > window.innerHeight * .1) {
+        const phaseProgress = clamp((window.innerHeight * .8 - rect.top) / Math.max(1, rect.height * .65));
+        setCampusPhase(!enabled ? 0 : phaseProgress < .34 ? 0 : phaseProgress < .72 ? 1 : 2);
+      }
+    }
+    portals.forEach((portal) => {
+      const rect = portal.getBoundingClientRect();
+      if (rect.top > window.innerHeight * 1.1 || rect.bottom < -100) return;
+      const p = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height));
+      portal.style.setProperty('--portal-progress', enabled ? p.toFixed(3) : '.55');
+    });
+    updateGallery();
+  }
+
+  function scheduleFrame() {
+    if (framePending) return;
+    framePending = true;
+    requestAnimationFrame(updateScrollEffects);
+  }
+  function onLayoutChange() {
+    layoutGallery();
+    scheduleFrame();
+  }
+
+  // El interruptor existente EFECTOS ON/OFF controla las nuevas animaciones.
+  const watcher = new MutationObserver(() => {
+    const on = effectsEnabled();
+    if (on === lastEffectsOn) return;
+    lastEffectsOn = on;
+    onLayoutChange();
+  });
+  watcher.observe(document.body, { attributes:true, attributeFilter:['class'] });
+  lastEffectsOn = effectsEnabled();
+  window.addEventListener('scroll', scheduleFrame, { passive:true });
+  window.addEventListener('resize', onLayoutChange, { passive:true });
+  window.addEventListener('load', onLayoutChange);
+  reduce.addEventListener?.('change', onLayoutChange);
+  desktop.addEventListener?.('change', onLayoutChange);
+  onLayoutChange();
+})();
