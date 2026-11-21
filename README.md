@@ -154,3 +154,15 @@ La portada incluye una escena tridimensional ligera implementada solo con **tran
 - No modifica TSJ Terminal, Campus Pulse, Scroll Stories, ni el juego Bug Hunt.
 
 Es 3D en CSS y no un motor WebGL; para una fase posterior podrían añadirse modelos ligeros solo si aportan valor y el dispositivo lo permite.
+
+
+## Entrada cinematográfica TSJ (V9 — noviembre de 2026)
+
+Al entrar por primera vez en una pestaña, se reproduce una intro de aprox. 3,8 segundos: el logo **TSJ** con anillos tridimensionales emerge del fondo, se amplía a gran tamaño y luego se minimiza para revelar el portafolio.
+
+- Animación mediante CSS 3D, reutilizando la identidad de la portada, sin nuevas dependencias.
+- Intro una vez por pestaña (`sessionStorage`); para reproducirla otra vez, usa el parámetro `?intro=1`.
+- No bloquea enlaces directos a otras secciones (`#proyectos`, `#terminal`, etc.).
+- Botón **Saltar intro**, tecla **Escape** y foco de teclado al contenido principal.
+- Respeta `prefers-reduced-motion`; un fallback de CSS revela la web incluso si el JavaScript principal falla.
+- No elimina el modo clásico, la escena 3D existente, TSJ Terminal, Campus Pulse ni Bug Hunt.
