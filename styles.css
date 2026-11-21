@@ -381,3 +381,69 @@ body{background:#070c17;color:#f3f7ff;}
   .project-preview{height:265px;}
   .game-main{padding:18px 12px;}
 }
+
+
+/* ================================================================
+   V6 — TSJ TERMINAL / INTERACCIÓN REAL, SIN LIBRERÍAS EXTERNAS
+   ================================================================ */
+.nav-console{display:inline-flex;align-items:center;gap:8px;}
+.kbd-hint{border:1px solid #36527e;border-radius:4px;padding:3px 5px;color:#aabfe5;font:700 9px var(--mono);letter-spacing:0;white-space:nowrap;}
+.console-section{
+  padding-top:100px;padding-bottom:112px;
+  background:radial-gradient(ellipse 45% 65% at 88% 60%,#18346665,transparent 75%),linear-gradient(155deg,#081324,#0b1931 78%,#061020);
+  color:#f4f8ff;
+  border-top:1px solid #254578;border-bottom:1px solid #24457a;
+  position:relative;isolation:isolate;
+}
+.console-section:before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(#5276a71a 1px,transparent 1px),linear-gradient(90deg,#5276a71a 1px,transparent 1px);
+  background-size:72px 72px;mask-image:linear-gradient(90deg,transparent,#000 65%,transparent);
+}
+.console-layout{display:grid;grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr);gap:clamp(30px,5vw,90px);align-items:center;padding-top:58px;}
+.console-intro .display-title{font-size:clamp(65px,7vw,126px);line-height:.84;margin:22px 0 26px;}
+.console-eyebrow{color:#7b9eff;font-size:11px;}
+.console-accent{color:#6390ff;}
+.console-description{max-width:420px;color:#bdcbe7;font-size:clamp(15px,1.4vw,18px);line-height:1.75;}
+.console-shortcut{margin-top:30px;display:flex;align-items:center;gap:15px;color:#b8c9e8;font:700 10px var(--mono);line-height:1.8;}
+.console-shortcut-icon{display:grid;place-items:center;border:1px solid #3d609c;width:44px;height:44px;flex-shrink:0;border-radius:9px;background:#172a4b;font:700 24px var(--mono);color:#6c9dff;}
+.console-shortcut kbd{font:700 10px var(--mono);padding:3px 6px;background:#172c4e;border:1px solid #365b98;border-radius:4px;color:#e6efff;}
+.terminal-window{
+  min-width:0;background:#050c18;border:1px solid #3b5f98;border-radius:13px;
+  box-shadow:0 32px 75px #0008,9px 9px 0 #132d61;overflow:hidden;position:relative;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.terminal-window:focus-within{border-color:#6b99fc;box-shadow:0 32px 75px #0009,0 0 0 3px #4379eb22,9px 9px 0 #132d61;}
+.terminal-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;background:#10203a;border-bottom:1px solid #2c4c7c;}
+.terminal-dots{display:flex;gap:7px;}
+.terminal-dots i{display:block;background:#4a6eaa;width:9px;height:9px;border-radius:50%;}
+.terminal-dots i:first-child{background:#8d6bf1;}.terminal-dots i:nth-child(2){background:#598fe8;}.terminal-dots i:last-child{background:#4fc3df;}
+.terminal-bar-title{color:#9fb7df;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.terminal-badge{font-size:9px;color:#91b4ff;white-space:nowrap;}
+.terminal-badge span{color:#52c9ab;font-size:8px;}
+.terminal-body{padding:24px 23px 16px;min-height:226px;max-height:330px;overflow-y:auto;scrollbar-color:#37578b #07111e;}
+.terminal-line{font:400 12px/1.75 var(--mono);color:#d4dff1;margin:0 0 8px;overflow-wrap:anywhere;}
+.terminal-greeting{color:#bed0ea;}
+.terminal-greeting strong{color:#8caeff;}
+.terminal-muted{color:#6394ed;}
+.terminal-entry{animation:terminalAppear .25s ease both;margin:0 0 17px;border-left:2px solid #274674;padding-left:13px;}
+.terminal-echo{color:#8db4ff;font:700 12px/1.7 var(--mono);margin:0 0 3px;overflow-wrap:anywhere;}
+.terminal-answer{color:#dce8ff;font:400 12px/1.8 var(--mono);white-space:pre-line;margin:0;overflow-wrap:anywhere;}
+.terminal-action{display:inline-flex;margin-top:10px;padding:9px 12px;color:#ddebff;background:#193666;border:1px solid #3e68a7;border-radius:5px;font:700 11px var(--mono);text-decoration:none;}
+.terminal-action:hover{background:#2854a0;color:#fff;}
+.terminal-error .terminal-answer{color:#e2b6da;}
+.terminal-form{display:flex;gap:12px;align-items:center;padding:15px 18px;border-top:1px solid #24406b;background:#081426;}
+.terminal-prompt{flex:0 0 auto;font-size:11px;color:#77a2f3;}
+.terminal-form input{flex:1;min-width:0;outline:none;border:0;background:transparent;color:#f3f7ff;font:400 13px var(--mono);caret-color:#80a5ff;padding:7px 0;}
+.terminal-form input::placeholder{color:#697f9f;opacity:1;}
+.terminal-submit{flex:0 0 auto;width:34px;height:32px;background:#326ff0;border:1px solid #5689ff;color:#fff;border-radius:5px;cursor:pointer;font:700 21px var(--mono);}
+.terminal-submit:hover{background:#4a86ff;}
+.terminal-quick{display:flex;flex-wrap:wrap;gap:7px;padding:14px 18px 5px;background:#0a172b;}
+.terminal-quick button{background:#142943;border:1px solid #2c4a77;color:#bcd0f2;border-radius:5px;padding:8px 10px;font:700 10px var(--mono);cursor:pointer;transition:background .2s,color .2s,transform .2s;}
+.terminal-quick button:hover{background:#24509c;border-color:#5083e9;color:#fff;transform:translateY(-2px);}
+.terminal-help{margin:0;padding:9px 18px 14px;background:#0a172b;color:#7c91b3;font:400 9px/1.5 var(--mono);}
+@keyframes terminalAppear{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(max-width:1080px){.console-layout{grid-template-columns:1fr;gap:30px;}.console-intro .display-title{font-size:clamp(60px,8vw,105px);}.console-description{max-width:680px;}}
+@media(max-width:760px){.console-section{padding-top:75px;padding-bottom:82px;}.console-layout{padding-top:35px;}.console-shortcut-icon{width:36px;height:36px;font-size:19px;}.console-intro .display-title{font-size:clamp(56px,11vw,87px);}.terminal-window{box-shadow:4px 5px 0 #142e61;}.terminal-bar{padding:14px;}.terminal-body{padding:18px 16px;min-height:190px;}.terminal-form{padding:13px;gap:8px;}.terminal-prompt{font-size:9px;}.terminal-form input{font-size:11px;}.terminal-quick{padding:12px 13px 4px;}.terminal-help{padding:8px 13px 13px;}.terminal-bar-title{font-size:9px;}.terminal-badge{font-size:8px;}}
+@media(max-width:400px){.terminal-bar-title{max-width:140px;}.console-intro .display-title{font-size:clamp(50px,10.7vw,63px);}.terminal-prompt{font-size:8px;}.terminal-form input{font-size:10px;}}
+@media(prefers-reduced-motion:reduce){.terminal-entry{animation:none;}.terminal-quick button{transition:none;}}
