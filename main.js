@@ -382,3 +382,36 @@ renderGame();
   new MutationObserver(syncState).observe(document.body, { attributes: true, attributeFilter: ['class'] });
   syncState();
 })();
+
+
+// V9 / CINEMATIC INTRO — accesible, una vez por pestaña, sin dependencias.
+(() => {
+  if (!document.documentElement.classList.contains('intro-pending')) return;
+  const overlay = document.querySelector('#introOverlay');
+  const skip = document.querySelector('#skipIntro');
+  if (!overlay || !skip) { document.documentElement.classList.remove('intro-pending'); return; }
+  let finished = false;
+  function onIntroKey(event) {
+    if (event.key === 'Escape') { event.preventDefault(); finishIntro(); }
+  }
+  function finishIntro() {
+    if (finished) return;
+    finished = true;
+    document.removeEventListener('keydown', onIntroKey);
+    document.documentElement.classList.remove('intro-pending');
+    overlay.hidden = true;
+    try { sessionStorage.setItem('tsj-intro-seen-v9', '1'); } catch (_) {}
+    if (document.activeElement === skip) {
+      const hero = document.querySelector('#heroTitle');
+      if (hero) { hero.setAttribute('tabindex', '-1'); hero.focus({ preventScroll: true }); }
+    }
+  }
+  skip.addEventListener('click', finishIntro);
+  document.addEventListener('keydown', onIntroKey);
+  window.setTimeout(finishIntro, 3800);
+  if (document.hidden) finishIntro();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) finishIntro();
+  });
+  if (!finished) skip.focus({ preventScroll: true });
+})();
