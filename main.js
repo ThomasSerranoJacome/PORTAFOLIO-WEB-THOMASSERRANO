@@ -451,16 +451,21 @@ renderGame();
   const animatedGallery = () => effectsEnabled() && desktop.matches;
 
   const skills = {
-    java: ['01 / JAVA', 'Programación orientada a objetos y lógica de software. Es parte de mi formación técnica y de mis ejercicios de práctica.'],
-    python: ['02 / PYTHON', 'Lenguaje que trabajo durante mi formación, aplicándolo en ejercicios y pequeños proyectos de programación.'],
-    spring: ['03 / SPRING BOOT', 'Actualmente aprendiendo a desarrollar backend con Java, APIs REST y persistencia de datos.'],
-    sql: ['04 / SQL', 'Consultas, organización y modelado de datos para aplicaciones y ejercicios de bases de datos.'],
-    javascript: ['05 / JAVASCRIPT', 'Interfaces interactivas, lógica en el navegador y proyectos web. Ejemplos: Acme School, Cola Virtual y este portafolio.'],
-    ia: ['06 / IA APLICADA', 'Exploro herramientas de inteligencia artificial aplicadas al software. En Campus Pulse participé en datos oficiales y en pruebas de datos y fechas.'],
-    pseint: ['07 / PSEINT', 'Diseño de algoritmos en pseudocódigo para practicar lógica y estructurar soluciones antes de programarlas.'],
-    scrum: ['08 / SCRUM', 'Conocimientos de trabajo ágil, organización de tareas y colaboración durante proyectos de desarrollo.'],
-    github: ['09 / GIT Y GITHUB', 'Control de versiones, repositorios y colaboración con código. Puedes visitar los proyectos públicos de mi perfil.'],
-    htmlcss: ['10 / HTML Y CSS', 'Maquetación, diseño adaptable y construcción de interfaces web con HTML5 y CSS3.']
+    java: ['01 / JAVA', 'Programación orientada a objetos y desarrollo de lógica con Java.'],
+    javascript: ['02 / JAVASCRIPT', 'Interactividad y lógica frontend. Ejemplos: este portafolio, Acme School y Cola Virtual.'],
+    python: ['03 / PYTHON', 'Conocimiento de programación con Python y práctica de algoritmos.'],
+    sql: ['04 / SQL', 'Consultas, relaciones y organización de información para bases de datos.'],
+    spring: ['05 / SPRING BOOT', 'Desarrollo backend con Java: APIs REST, JPA y persistencia de datos. Sigo fortaleciendo la práctica.'],
+    postgres: ['06 / POSTGRESQL', 'Uso de PostgreSQL para trabajar con bases de datos relacionales y consultas SQL.'],
+    mysql: ['07 / MYSQL', 'Gestión y consulta de bases de datos relacionales con MySQL.'],
+    dbeaver: ['08 / DBEAVER', 'Herramienta para conectarme a bases de datos, examinar tablas y ejecutar consultas SQL.'],
+    pseint: ['09 / PSEINT', 'Diseño de algoritmos en pseudocódigo y práctica de lógica de programación.'],
+    ia: ['10 / IA APLICADA', 'Formación con IA aplicada al software. Campus Pulse incluyó funciones de IA como trabajo en equipo; mi aporte se centró en datos y validación.'],
+    netbeans: ['11 / NETBEANS', 'Entorno de desarrollo que conozco para trabajar en proyectos de Java.'],
+    intellij: ['12 / INTELLIJ IDEA', 'IDE que utilizo para escribir, organizar y ejecutar proyectos en Java y Spring Boot.'],
+    github: ['13 / GIT Y GITHUB', 'Control de versiones, seguimiento de cambios, repositorios y colaboración.'],
+    scrum: ['14 / SCRUM', 'Conocimientos de metodologías ágiles, organización de tareas y colaboración en equipo.'],
+    htmlcss: ['15 / HTML Y CSS', 'Estructura de páginas web, maquetación adaptable y estilos visuales de interfaces.']
   };
 
   function setSkill(key) {
