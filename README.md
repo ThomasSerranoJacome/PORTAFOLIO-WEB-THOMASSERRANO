@@ -166,3 +166,24 @@ Al entrar por primera vez en una pestaña, se reproduce una intro de aprox. 3,8 
 - Botón **Saltar intro**, tecla **Escape** y foco de teclado al contenido principal.
 - Respeta `prefers-reduced-motion`; un fallback de CSS revela la web incluso si el JavaScript principal falla.
 - No elimina el modo clásico, la escena 3D existente, TSJ Terminal, Campus Pulse ni Bug Hunt.
+
+
+## V10 — Experiencia cinematográfica controlada por scroll
+
+Se incorporaron **cinco** mejoras visuales e interactivas, sin añadir librerías:
+
+1. **Logo TSJ con movimiento progresivo:** a medida que el visitante baja desde la portada, el núcleo 3D rota, se aleja y se reduce. Aparece una insignia flotante temporal.
+2. **Mapa tecnológico conectable:** nodos interactivos de Java, JavaScript, Spring Boot, SQL, IA y GitHub. Las líneas se revelan progresivamente con el scroll; al pulsar cada tecnología se muestra su aplicación real y el estado de aprendizaje.
+3. **Campus Pulse en movimiento:** mini demostración **conceptual**, con tres estados (espacios, reservas, incidencias), seleccionables por botones o revelados conforme se avanza. **No son datos en tiempo real** ni un plano real del campus.
+4. **Galería horizontal:** los proyectos Acme School, Cola Virtual y MatchUp se desplazan horizontalmente mediante scroll vertical en pantallas grandes compatibles. En móviles, con movimiento reducido o con efectos desactivados, se usa una presentación legible y navegable normalmente. También contempla navegación con teclado.
+5. **Portales de luz sutiles:** dos transiciones entre secciones, gobernadas por la posición del scroll.
+
+Se excluyó la propuesta de **código que se escribe durante el scroll** a petición del autor.
+
+### Rendimiento y accesibilidad
+
+- Las animaciones se actualizan mediante `requestAnimationFrame`, usando `transform` y variables CSS.
+- Respeta `prefers-reduced-motion` y el interruptor existente **EFECTOS ON/OFF**.
+- Los proyectos siguen enlazados a sus repositorios públicos; el repositorio privado del equipo de Campus Pulse no se expone.
+- Todas las tecnologías y las etapas de la demo conceptual cuentan con botones de teclado y textos alternativos accesibles.
+- El proyecto mantiene su identidad negro/azul, intro TSJ V9, escena 3D V8, TSJ Terminal y Bug Hunt.
