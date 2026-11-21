@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#060b16">
-  <meta name="portfolio-version" content="2026-11-21-v9">
+  <meta name="portfolio-version" content="2026-11-21-v10">
   <meta name="description" content="Portafolio de Thomas Serrano Jácome: desarrollo de software, experiencias web, proyectos y un minijuego interactivo.">
   <meta property="og:title" content="Thomas Serrano Jácome — Desarrollador de software">
   <meta property="og:description" content="Ideas en código. Explora mis proyectos, descubre lo que construyo y juega TSJ Arcade.">
@@ -26,8 +26,8 @@
       } catch (_) { /* Sin almacenamiento, se presenta la web normalmente. */ }
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=20261121-09">
-  <script src="./main.js?v=20261121-09" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20261121-10">
+  <script src="./main.js?v=20261121-10" defer></script>
 </head>
 <body>
 
@@ -53,6 +53,7 @@
   </div>
   <a class="skip-link" href="#inicio">Saltar al contenido</a>
   <div class="site-progress" aria-hidden="true"><span id="siteProgressBar" class="site-progress-bar"></span></div>
+  <div class="scroll-emblem" id="scrollEmblem" aria-hidden="true"><span>TS<b>J</b></span><small>SCROLL / MODE</small></div>
   <header class="topbar" id="topbar">
     <a class="brand" href="#inicio" aria-label="Thomas Serrano, inicio"><span class="brand-mark">TS<span>J</span></span><span class="brand-type">THOMAS SERRANO<br><small>DEVELOPER PORTFOLIO</small></span></a>
     <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
@@ -154,6 +155,12 @@
       </div>
     </section>
 
+
+    <div class="chapter-portal" data-story-portal aria-hidden="true">
+      <div class="chapter-portal-light"></div><span class="chapter-portal-ring"></span><span class="chapter-portal-ring chapter-portal-ring--inner"></span>
+      <span class="mono chapter-portal-caption">TSJ / EXPLORE PROJECTS</span>
+    </div>
+
     <section class="projects section-pad" id="proyectos" aria-labelledby="projectsTitle">
       <div class="section-kicker"><span>02 / LO QUE HE CONSTRUIDO</span><span>PROYECTOS SELECCIONADOS</span></div>
       <div class="section-heading-row reveal"><h2 id="projectsTitle" class="display-title dark-title">PROYECTOS<br><span class="outline-word">REALES.</span></h2><p>Aplicaciones, interfaces y soluciones construidas durante mi formación y en proyectos colaborativos.</p></div>
@@ -175,6 +182,18 @@
                   <span class="room">SPOOKI</span><span class="room">ARTEMIS</span>
                 </div>
                 <div class="campus-plan-foot mono">RESERVAS / EQUIPOS / INCIDENCIAS</div>
+                <div class="campus-story" id="campusStory">
+                  <div class="campus-story-options" role="group" aria-label="Explorar la demostración conceptual">
+                    <button type="button" class="campus-story-button is-selected" data-campus-phase="0" aria-pressed="true">01 Espacios</button>
+                    <button type="button" class="campus-story-button" data-campus-phase="1" aria-pressed="false">02 Reservas</button>
+                    <button type="button" class="campus-story-button" data-campus-phase="2" aria-pressed="false">03 Incidencias</button>
+                  </div>
+                  <div class="campus-story-data">
+                    <span class="mono" id="campusStoryStatus" aria-live="polite">ESPACIOS / VISTA GENERAL</span>
+                    <span id="campusStoryDetail">Consulta de salas y capacidades.</span>
+                  </div>
+                  <small>Visualización conceptual, sin conexión a datos reales.</small>
+                </div>
               </div>
             </div>
             <div class="preview-bottom mono"><span>PROYECTO COLABORATIVO</span><span>2026</span></div>
@@ -187,6 +206,11 @@
             <p class="project-note mono">Repositorio privado del equipo · descripción basada en el README del proyecto</p>
           </div><span class="project-index" aria-hidden="true">01</span></div>
         </article>
+      </div>
+      <div class="project-gallery" id="projectGallery" aria-label="Galería de proyectos">
+        <div class="project-gallery-head mono"><span>DESLIZA PARA EXPLORAR / 03 PROYECTOS</span><span id="projectGalleryIndex">01 / 03</span></div>
+        <div class="project-gallery-sticky" id="projectGallerySticky">
+          <div class="project-gallery-track" id="projectGalleryTrack">
         <a class="project-card reveal" href="https://github.com/ThomasSerranoJacome/ProyectoAcmeschool_JavaScript_Ca-izares_Serrano_Carvajal" target="_blank" rel="noopener noreferrer" aria-label="Ver Acme School en GitHub">
           <div class="project-preview preview-serious">
             <div class="preview-header mono"><span>02 / PLATAFORMA WEB</span><span>JAVASCRIPT</span></div>
@@ -211,6 +235,9 @@
           </div>
           <div class="project-info"><div><div class="project-number mono">04 / FRONTEND</div><h3>MatchUp</h3><p>Experiencia visual y catálogo web orientado a camisetas de fútbol.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>UI/UX</span></div></div><span class="project-arrow" aria-hidden="true">↗</span></div>
         </a>
+          </div>
+        </div>
+        <div class="project-gallery-footer" aria-hidden="true"><span id="projectGalleryProgress"></span></div>
       </div>
       <div class="view-all"><a class="btn btn-outline" href="https://github.com/ThomasSerranoJacome?tab=repositories" target="_blank" rel="noopener noreferrer">Ver todos mis repositorios <span aria-hidden="true">↗</span></a></div>
     </section>
@@ -218,6 +245,28 @@
     <section class="skills section-pad" id="habilidades" aria-labelledby="skillsTitle">
       <div class="section-kicker"><span>03 / HERRAMIENTAS & CONOCIMIENTOS</span><span>MI CAJA DE HERRAMIENTAS</span></div>
       <div class="skills-grid"><div class="reveal"><h2 id="skillsTitle" class="display-title dark-title">MI STACK<br>TECNOLÓGICO<span class="hero-stop">.</span></h2><p class="skills-intro">Tecnologías que utilizo y estudio. No se trata de saberlo todo, sino de seguir aprendiendo y construir bien.</p></div><div class="skill-panels reveal"><div class="skill-panel"><span class="mono skill-label">01 / LENGUAJES</span><div class="skill-chips"><span>Java</span><span>JavaScript</span><span>Python</span><span>SQL</span></div></div><div class="skill-panel"><span class="mono skill-label">02 / DESARROLLO WEB</span><div class="skill-chips"><span>HTML5</span><span>CSS3</span><span>DOM</span><span>APIs REST</span></div></div><div class="skill-panel"><span class="mono skill-label">03 / BACKEND Y DATOS</span><div class="skill-chips"><span>Spring Boot <small>aprendiendo</small></span><span>MySQL</span><span>PostgreSQL</span></div></div><div class="skill-panel"><span class="mono skill-label">04 / FLUJO DE TRABAJO</span><div class="skill-chips"><span>Git & GitHub</span><span>VS Code</span><span>IA aplicada</span></div></div></div></div>
+
+      <div class="skill-network" id="skillNetwork" aria-labelledby="skillNetworkTitle">
+        <div class="skill-network-heading">
+          <div><span class="mono">/ CONEXIONES REALES</span><h3 id="skillNetworkTitle">MI UNIVERSO <span>TECH.</span></h3></div>
+          <p>Selecciona una tecnología y descubre cómo se conecta con mi experiencia. Las líneas se construyen mientras avanzas.</p>
+        </div>
+        <div class="skill-network-map">
+          <svg viewBox="0 0 900 340" class="skill-network-lines" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 145 80 L 445 170 L 745 74 M 145 255 L 445 170 L 745 270 M 145 80 L 145 255 M 745 74 L 745 270 M 445 170 L 445 42"/>
+          </svg>
+          <button type="button" class="skill-node" data-skill-key="java" style="--nx:16%;--ny:24%" aria-pressed="false"><span>01</span><strong>JAVA</strong></button>
+          <button type="button" class="skill-node" data-skill-key="javascript" style="--nx:49%;--ny:50%" aria-pressed="true"><span>02</span><strong>JAVASCRIPT</strong></button>
+          <button type="button" class="skill-node" data-skill-key="spring" style="--nx:82%;--ny:22%" aria-pressed="false"><span>03</span><strong>SPRING</strong></button>
+          <button type="button" class="skill-node" data-skill-key="sql" style="--nx:16%;--ny:77%" aria-pressed="false"><span>04</span><strong>SQL</strong></button>
+          <button type="button" class="skill-node" data-skill-key="ia" style="--nx:82%;--ny:79%" aria-pressed="false"><span>05</span><strong>IA</strong></button>
+          <button type="button" class="skill-node" data-skill-key="github" style="--nx:49%;--ny:13%" aria-pressed="false"><span>06</span><strong>GITHUB</strong></button>
+        </div>
+        <div class="skill-network-detail" id="skillNetworkDetail" role="status" aria-live="polite">
+          <span class="mono">02 / JAVASCRIPT</span>
+          <p>Interfaces interactivas, proyectos web y lógica del navegador. Proyectos: Acme School, Cola Virtual y este portafolio.</p>
+        </div>
+      </div>
     </section>
 
     <section class="services section-pad" id="servicios" aria-labelledby="servicesTitle">
@@ -235,6 +284,12 @@
         <div class="game-footer mono"><span>100% HECHO CON JAVASCRIPT VANILLA</span><span>NO HAY ATALAJOS PARA UN BUEN DEBUG ↗</span></div>
       </div>
     </section>
+
+
+    <div class="chapter-portal" data-story-portal aria-hidden="true">
+      <div class="chapter-portal-light"></div><span class="chapter-portal-ring"></span><span class="chapter-portal-ring chapter-portal-ring--inner"></span>
+      <span class="mono chapter-portal-caption">TSJ / NEXT CHAPTER</span>
+    </div>
 
     <section class="contact section-pad" id="contacto" aria-labelledby="contactTitle"><div class="section-kicker light-kicker"><span>06 / EL PRÓXIMO PROYECTO</span><span>HABLEMOS DE IDEAS</span></div><p class="contact-pretitle reveal">¿TIENES UN PROYECTO EN MENTE?</p><h2 class="display-title contact-title reveal" id="contactTitle">CONSTRUYAMOS<br><span>ALGO REAL.</span><span class="contact-asterisk" aria-hidden="true">✳</span></h2><div class="contact-bottom reveal"><p>Estoy abierto a conectar, aprender, colaborar y convertir buenas ideas en algo que funcione.</p><a class="contact-mail" href="mailto:thomasserranojacome@gmail.com?subject=Hola%20Thomas%2C%20hablemos%20de%20un%20proyecto">ESCRÍBEME <span aria-hidden="true">↗</span></a></div><div class="contact-links mono"><a href="mailto:thomasserranojacome@gmail.com">EMAIL ↗</a><a href="https://github.com/ThomasSerranoJacome" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="#inicio">VOLVER ARRIBA ↑</a></div></section>
   </main>
