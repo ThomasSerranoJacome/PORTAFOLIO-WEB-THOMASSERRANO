@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#060b16">
-  <meta name="portfolio-version" content="2026-11-21-v8">
+  <meta name="portfolio-version" content="2026-11-21-v9">
   <meta name="description" content="Portafolio de Thomas Serrano Jácome: desarrollo de software, experiencias web, proyectos y un minijuego interactivo.">
   <meta property="og:title" content="Thomas Serrano Jácome — Desarrollador de software">
   <meta property="og:description" content="Ideas en código. Explora mis proyectos, descubre lo que construyo y juega TSJ Arcade.">
@@ -12,10 +12,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&amp;family=Inter:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20261121-08">
-  <script src="./main.js?v=20261121-08" defer></script>
+  <script>
+    // Intro una vez por pestaña; ?intro=1 permite reproducirla de nuevo.
+    (() => {
+      try {
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const deepLink = window.location.hash && window.location.hash !== '#inicio';
+        const replay = new URLSearchParams(window.location.search).get('intro') === '1';
+        const seen = sessionStorage.getItem('tsj-intro-seen-v9') === '1';
+        if (!reduced && !deepLink && (replay || !seen)) {
+          document.documentElement.classList.add('intro-pending');
+        }
+      } catch (_) { /* Sin almacenamiento, se presenta la web normalmente. */ }
+    })();
+  </script>
+  <link rel="stylesheet" href="./styles.css?v=20261121-09">
+  <script src="./main.js?v=20261121-09" defer></script>
 </head>
 <body>
+
+  <div class="intro-overlay" id="introOverlay" role="dialog" aria-modal="true" aria-labelledby="introTitle" aria-describedby="introDescription">
+    <div class="intro-topline mono"><span>TSJ / INITIALIZING EXPERIENCE</span><span>2026 — PORTFOLIO</span></div>
+    <div class="intro-ambient" aria-hidden="true"></div>
+    <div class="intro-perspective" aria-hidden="true">
+      <div class="intro-logo-world">
+        <span class="intro-ambient-glow"></span>
+        <span class="cinema-orbit cinema-orbit--outer"></span>
+        <span class="cinema-orbit cinema-orbit--vertical"></span>
+        <span class="cinema-orbit cinema-orbit--inner"></span>
+        <span class="cinema-monogram"><span>TS</span><b>J</b></span>
+      </div>
+    </div>
+    <div class="intro-copy">
+      <p class="mono">/ SYSTEM BOOT · DEVELOPER PORTFOLIO</p>
+      <h2 id="introTitle">THOMAS SERRANO</h2>
+      <span id="introDescription" class="mono">CREANDO EXPERIENCIAS EN CÓDIGO</span>
+    </div>
+    <div class="intro-foot mono"><span>INICIANDO EXPERIENCIA</span><span class="intro-track" aria-hidden="true"><span></span></span></div>
+    <button id="skipIntro" class="intro-skip mono" type="button">SALTAR INTRO <span aria-hidden="true">↗</span></button>
+  </div>
   <a class="skip-link" href="#inicio">Saltar al contenido</a>
   <div class="site-progress" aria-hidden="true"><span id="siteProgressBar" class="site-progress-bar"></span></div>
   <header class="topbar" id="topbar">
