@@ -138,3 +138,19 @@ El portafolio incorpora una capa de movimiento progresivo sin frameworks:
 - **Control «EFECTOS ON/OFF»** para desactivar animaciones; se respeta la preferencia del sistema `prefers-reduced-motion`.
 
 Los efectos son decorativos: la lectura, los enlaces, la terminal interactiva y **Bug Hunt** funcionan independientemente de ellos. No se instalaron dependencias adicionales.
+
+
+## Experiencia 3D cinematográfica (V8 — noviembre de 2026)
+
+La portada incluye una escena tridimensional ligera implementada solo con **transformaciones CSS 3D** (perspectiva, planos rotados y profundidad) y JavaScript nativo. No necesita descargar Three.js, WebGL, modelos 3D ni videos.
+
+- Núcleo TSJ con profundidad, órbitas luminosas, perspectiva y parrilla tecnológica.
+- El movimiento del mouse en escritorio inclina suavemente la escena.
+- Botón accesible **VISTA CLÁSICA / ACTIVAR VISTA 3D**, sin sacrificar la portada anterior.
+- En escritorio compatible se activa 3D por defecto. En móvil y con `prefers-reduced-motion` se ofrece de entrada la vista clásica; el usuario puede optar por una escena estática 3D.
+- El escenario se pausa fuera del área visible, cuando la pestaña está oculta o si el visitante apaga los efectos generales.
+- La capa 3D es decorativa y queda fuera del árbol de accesibilidad; el contenido semántico de presentación, navegación y proyectos permanece en HTML.
+- El enlace «ENTRAR A PROYECTOS» conserva navegación por ancla y añade una transición ligera.
+- No modifica TSJ Terminal, Campus Pulse, Scroll Stories, ni el juego Bug Hunt.
+
+Es 3D en CSS y no un motor WebGL; para una fase posterior podrían añadirse modelos ligeros solo si aportan valor y el dispositivo lo permite.
