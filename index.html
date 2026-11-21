@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#060b16">
-  <meta name="portfolio-version" content="2026-11-20-v6">
+  <meta name="portfolio-version" content="2026-11-21-v7">
   <meta name="description" content="Portafolio de Thomas Serrano Jácome: desarrollo de software, experiencias web, proyectos y un minijuego interactivo.">
   <meta property="og:title" content="Thomas Serrano Jácome — Desarrollador de software">
   <meta property="og:description" content="Ideas en código. Explora mis proyectos, descubre lo que construyo y juega TSJ Arcade.">
@@ -12,11 +12,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&amp;family=Inter:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20261120-06">
-  <script src="./main.js?v=20261120-06" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20261121-07">
+  <script src="./main.js?v=20261121-07" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#inicio">Saltar al contenido</a>
+  <div class="site-progress" aria-hidden="true"><span id="siteProgressBar" class="site-progress-bar"></span></div>
   <header class="topbar" id="topbar">
     <a class="brand" href="#inicio" aria-label="Thomas Serrano, inicio"><span class="brand-mark">TS<span>J</span></span><span class="brand-type">THOMAS SERRANO<br><small>DEVELOPER PORTFOLIO</small></span></a>
     <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
@@ -183,5 +184,9 @@
     <section class="contact section-pad" id="contacto" aria-labelledby="contactTitle"><div class="section-kicker light-kicker"><span>06 / EL PRÓXIMO PROYECTO</span><span>HABLEMOS DE IDEAS</span></div><p class="contact-pretitle reveal">¿TIENES UN PROYECTO EN MENTE?</p><h2 class="display-title contact-title reveal" id="contactTitle">CONSTRUYAMOS<br><span>ALGO REAL.</span><span class="contact-asterisk" aria-hidden="true">✳</span></h2><div class="contact-bottom reveal"><p>Estoy abierto a conectar, aprender, colaborar y convertir buenas ideas en algo que funcione.</p><a class="contact-mail" href="mailto:thomasserranojacome@gmail.com?subject=Hola%20Thomas%2C%20hablemos%20de%20un%20proyecto">ESCRÍBEME <span aria-hidden="true">↗</span></a></div><div class="contact-links mono"><a href="mailto:thomasserranojacome@gmail.com">EMAIL ↗</a><a href="https://github.com/ThomasSerranoJacome" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="#inicio">VOLVER ARRIBA ↑</a></div></section>
   </main>
   <footer class="footer mono"><span>© <span id="year">2026</span> THOMAS SERRANO JÁCOME</span><span>DISEÑADO PARA SEGUIR CRECIENDO. <b>✳</b></span><span>BUCARAMANGA / CO</span></footer>
+  <aside class="scroll-hud" id="scrollHud" aria-label="Controles de navegación visual">
+    <div class="scroll-hud-current" aria-hidden="true"><span id="scrollChapterNo">01 / 08</span><strong id="scrollChapterName">INICIO</strong></div>
+    <button type="button" class="motion-toggle" id="motionToggle" aria-label="Desactivar efectos de movimiento" aria-pressed="true">EFECTOS <span id="motionToggleState">ON</span></button>
+  </aside>
 </body>
 </html>
