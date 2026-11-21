@@ -111,3 +111,16 @@ Estudiante de Desarrollo de Software | Bucaramanga, Colombia
 ## Revisión de diseño · V4
 
 La última revisión incrementa el contraste sin saturar: fondo casi negro, secciones navy, acento azul eléctrico y toques morados. Elimina dibujos flotantes y reemplaza la ilustración principal por un panel tipográfico «TSJ». Prioriza Campus Pulse y proyectos de software sobre ejemplos pequeños. Mantiene el minijuego **Bug Hunt** sin cambiar su lógica.
+
+
+## TSJ Terminal — experiencia interactiva (noviembre de 2026)
+
+La web incluye una terminal funcional antes de la sección «Sobre mí». Permite explorar el portafolio escribiendo comandos o pulsando atajos táctiles:
+
+- `ayuda`: muestra las opciones disponibles.
+- `quien`, `proyectos`, `campus`, `stack`, `arcade`, `contacto`, `github`: responden con información y enlaces reales a las secciones o recursos públicos.
+- `sorpresa`: comando secreto.
+- `limpiar`: limpia el historial visible.
+- **Ctrl + K** (o **⌘ + K** en macOS): desplaza a la terminal y enfoca la entrada.
+
+La experiencia es 100 % **HTML, CSS y JavaScript puro**, sin servicios de terceros ni procesamiento de comandos arbitrarios. La terminal no envía el texto a ningún servidor. Se conserva el videojuego **Bug Hunt** y no se enlaza públicamente al repositorio privado de Campus Pulse.
