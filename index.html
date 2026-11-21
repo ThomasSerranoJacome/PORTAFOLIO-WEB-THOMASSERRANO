@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#060b16">
-  <meta name="portfolio-version" content="2026-11-21-v7">
+  <meta name="portfolio-version" content="2026-11-21-v8">
   <meta name="description" content="Portafolio de Thomas Serrano Jácome: desarrollo de software, experiencias web, proyectos y un minijuego interactivo.">
   <meta property="og:title" content="Thomas Serrano Jácome — Desarrollador de software">
   <meta property="og:description" content="Ideas en código. Explora mis proyectos, descubre lo que construyo y juega TSJ Arcade.">
@@ -12,8 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&amp;family=Inter:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20261121-07">
-  <script src="./main.js?v=20261121-07" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20261121-08">
+  <script src="./main.js?v=20261121-08" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#inicio">Saltar al contenido</a>
@@ -43,6 +43,26 @@
             <div class="identity-signature">TS<span>J</span><small>/ 01</small></div>
             <div class="identity-status mono"><span class="identity-dot"></span> DESARROLLO WEB / SOFTWARE</div>
             <div class="identity-facts"><div><span class="mono">BASE</span><strong>Bucaramanga · Colombia</strong></div><div><span class="mono">FORMACIÓN</span><strong>Campuslands</strong></div></div>
+          </div>
+          <div class="cinema-stage" id="cinemaStage" aria-hidden="true">
+            <div class="cinema-backlight"></div>
+            <div class="cinema-stars"></div>
+            <div class="cinema-floor"></div>
+            <div class="cinema-world" id="cinemaWorld">
+              <div class="cinema-aura"></div>
+              <div class="cinema-orbit cinema-orbit--outer"></div>
+              <div class="cinema-orbit cinema-orbit--vertical"></div>
+              <div class="cinema-orbit cinema-orbit--inner"></div>
+              <div class="cinema-monogram"><span>TS</span><b>J</b></div>
+              <div class="cinema-axis cinema-axis--x"></div>
+              <div class="cinema-axis cinema-axis--y"></div>
+            </div>
+            <div class="cinema-scene-top mono"><span>TSJ / CINEMATIC MODE</span><span>VOL. 2026</span></div>
+            <div class="cinema-scene-bottom mono"><span><i class="cinema-beacon" aria-hidden="true"></i> SYSTEM ONLINE</span><span>SOFTWARE · WEB · IA</span></div>
+          </div>
+          <div class="cinema-controls">
+            <button type="button" class="cinema-toggle mono" id="cinemaToggle" aria-controls="cinemaStage" aria-pressed="false">ACTIVAR VISTA 3D <span aria-hidden="true">↗</span></button>
+            <a class="cinema-explore mono" href="#proyectos" id="cinemaExplore">ENTRAR A PROYECTOS <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
