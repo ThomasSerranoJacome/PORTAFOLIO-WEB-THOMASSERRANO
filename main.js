@@ -114,3 +114,85 @@ document.querySelectorAll('[data-direction]').forEach(button => button.addEventL
   moveGame(...directions[key]);
 }));
 renderGame();
+
+// TSJ TERMINAL — Comandos reales sin eval, sin API y sin dependencias.
+(() => {
+  const form = document.querySelector('#terminalForm');
+  const field = document.querySelector('#terminalInput');
+  const log = document.querySelector('#terminalLog');
+  const section = document.querySelector('#terminal');
+  if (!form || !field || !log || !section) return;
+
+  const commands = {
+    ayuda: { message: 'Comandos disponibles:\nquien · proyectos · campus · stack · arcade · contacto · github · sorpresa · limpiar' },
+    quien: { message: 'Soy Thomas Serrano Jácome. Estudio desarrollo de software en Campuslands y me gusta construir soluciones web, trabajar con datos y seguir aprendiendo.', href: '#sobre-mi', link: 'CONOCER MI PERFIL ↗' },
+    proyectos: { message: 'Mis proyectos destacados: Campus Pulse (hackatón), Acme School, Cola Virtual y MatchUp.', href: '#proyectos', link: 'EXPLORAR PROYECTOS ↗' },
+    campus: { message: 'CAMPUS PULSE / HACKATÓN\nAplicación en equipo: mapa de espacios, reservas, recursos, incidencias y herramientas de IA. Mi rol: datos oficiales y pruebas de datos y fechas. El repositorio del equipo es privado.', href: '#proyectos', link: 'VER PROYECTO DESTACADO ↗' },
+    stack: { message: 'Tecnologías: Java, JavaScript, Python, SQL, HTML/CSS, APIs REST. Estoy aprendiendo Spring Boot y desarrollo backend.', href: '#habilidades', link: 'VER HABILIDADES ↗' },
+    arcade: { message: 'Desafío desbloqueado: Bug Hunt. Atrapa cinco ideas y esquiva los bugs. Se juega con WASD, flechas o controles táctiles.', href: '#arcade', link: 'IR A BUG HUNT ↗' },
+    contacto: { message: '¿Tienes un proyecto? Escríbeme a thomasserranojacome@gmail.com.', href: 'mailto:thomasserranojacome@gmail.com?subject=Proyecto%20desde%20TSJ%20Terminal', link: 'ENVIAR CORREO ↗' },
+    github: { message: 'Mis repositorios y proyectos de aprendizaje están en GitHub.', href: 'https://github.com/ThomasSerranoJacome', link: 'ABRIR GITHUB ↗' },
+    sorpresa: { message: '      [ TSJ / LEVEL UNLOCKED ]\n      BUILD  →  TEST  →  SHIP\n      ¡Encontraste el comando secreto!\n      Curiosidad + constancia = progreso.', href: '#arcade', link: 'DESBLOQUEAR EL ARCADE ↗' }
+  };
+
+  function addEntry(command, response, isError = false) {
+    const entry = document.createElement('div');
+    entry.className = 'terminal-entry' + (isError ? ' terminal-error' : '');
+    const echo = document.createElement('p');
+    echo.className = 'terminal-echo';
+    echo.textContent = 'visitor@tsj:~$ ' + command;
+    const answer = document.createElement('p');
+    answer.className = 'terminal-answer';
+    answer.textContent = response.message;
+    entry.append(echo, answer);
+    if (response.href) {
+      const link = document.createElement('a');
+      link.href = response.href;
+      link.className = 'terminal-action';
+      link.textContent = response.link;
+      if (response.href.startsWith('https://')) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
+      entry.append(link);
+    }
+    log.append(entry);
+    const entries = log.querySelectorAll('.terminal-entry');
+    if (entries.length > 8) entries[0].remove();
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function runCommand(raw) {
+    const command = raw.trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/^\/+/, '');
+    if (!command) return;
+    field.value = '';
+    if (command === 'limpiar' || command === 'clear') {
+      log.replaceChildren();
+      addEntry(command, { message: 'Pantalla limpia. Escribe ayuda para ver los comandos.' });
+      return;
+    }
+    const key = command === 'help' ? 'ayuda' : command === 'quien-soy' || command === 'about' ? 'quien' : command === 'skills' ? 'stack' : command === '?' ? 'sorpresa' : command;
+    const response = commands[key];
+    if (response) addEntry(command, response);
+    else addEntry(command, { message: 'Comando no reconocido. Prueba con ayuda, proyectos, stack o contacto.' }, true);
+  }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    runCommand(field.value);
+  });
+  document.querySelectorAll('[data-terminal-command]').forEach((button) => {
+    button.addEventListener('click', () => {
+      runCommand(button.dataset.terminalCommand);
+      if (window.matchMedia('(hover: hover)').matches) field.focus({ preventScroll: true });
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+      event.preventDefault();
+      section.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+      field.focus({ preventScroll: true });
+    }
+    if (event.key === 'Escape' && document.activeElement === field) field.blur();
+  });
+})();
