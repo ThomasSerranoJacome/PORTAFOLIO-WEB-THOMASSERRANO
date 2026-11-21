@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#060b16">
-  <meta name="portfolio-version" content="2026-11-21-v12">
+  <meta name="portfolio-version" content="2026-11-21-v13">
   <meta name="description" content="Portafolio de Thomas Serrano Jácome: desarrollo de software, experiencias web, proyectos y un minijuego interactivo.">
   <meta property="og:title" content="Thomas Serrano Jácome — Desarrollador de software">
   <meta property="og:description" content="Ideas en código. Explora mis proyectos, descubre lo que construyo y juega TSJ Arcade.">
   <title>Thomas Serrano Jácome | Desarrollador de Software</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20261121-13">
+  <link rel="shortcut icon" href="./favicon.svg?v=20261121-13">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&amp;family=Inter:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
@@ -26,8 +28,8 @@
       } catch (_) { /* Sin almacenamiento, se presenta la web normalmente. */ }
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=20261121-12">
-  <script src="./main.js?v=20261121-12" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20261121-13">
+  <script src="./main.js?v=20261121-13" defer></script>
 </head>
 <body>
 
@@ -55,7 +57,7 @@
   <div class="site-progress" aria-hidden="true"><span id="siteProgressBar" class="site-progress-bar"></span></div>
   <div class="scroll-emblem" id="scrollEmblem" aria-hidden="true"><span>TS<b>J</b></span><small>SCROLL / MODE</small></div>
   <header class="topbar" id="topbar">
-    <a class="brand" href="#inicio" aria-label="Thomas Serrano, inicio"><span class="brand-mark">TS<span>J</span></span><span class="brand-type">THOMAS SERRANO<br><small>DEVELOPER PORTFOLIO</small></span></a>
+    <a class="brand" href="#inicio" aria-label="Thomas Serrano, inicio"><span class="brand-icon" aria-hidden="true"><img src="./favicon.svg?v=20261121-13" alt="" width="54" height="54"></span><span class="brand-type">THOMAS SERRANO<br><small>DEVELOPER PORTFOLIO</small></span></a>
     <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
     <nav id="navLinks" class="nav-links" aria-label="Navegación principal">
       <a href="#sobre-mi">Sobre mí</a><a href="#proyectos">Proyectos</a><a href="#habilidades">Stack</a><a href="#terminal" class="nav-console">Terminal <span class="kbd-hint">⌘K</span></a><a href="#arcade">Arcade <span class="nav-star">/</span></a>
@@ -263,7 +265,8 @@
 
     <section class="skills section-pad" id="habilidades" aria-labelledby="skillsTitle">
       <div class="section-kicker"><span>03 / HERRAMIENTAS & CONOCIMIENTOS</span><span>MI CAJA DE HERRAMIENTAS</span></div>
-      <div class="skills-grid"><div class="reveal"><h2 id="skillsTitle" class="display-title dark-title">MI STACK<br>TECNOLÓGICO<span class="hero-stop">.</span></h2><p class="skills-intro">Tecnologías que utilizo y estudio. No se trata de saberlo todo, sino de seguir aprendiendo y construir bien.</p></div><div class="skill-panels reveal"><div class="skill-panel"><span class="mono skill-label">01 / LENGUAJES</span><div class="skill-chips"><span>Java</span><span>JavaScript</span><span>Python</span><span>SQL</span></div></div><div class="skill-panel"><span class="mono skill-label">02 / DESARROLLO WEB</span><div class="skill-chips"><span>HTML5</span><span>CSS3</span><span>DOM</span><span>APIs REST</span></div></div><div class="skill-panel"><span class="mono skill-label">03 / BACKEND Y DATOS</span><div class="skill-chips"><span>Spring Boot <small>aprendiendo</small></span><span>MySQL</span><span>PostgreSQL</span></div></div><div class="skill-panel"><span class="mono skill-label">04 / FLUJO DE TRABAJO</span><div class="skill-chips"><span>Git & GitHub</span><span>VS Code</span><span>Scrum</span><span>PSeInt · pseudocódigo</span><span>IA aplicada</span></div></div></div></div>
+      <div class="skills-grid"><div class="reveal"><h2 id="skillsTitle" class="display-title dark-title">MI STACK<br>TECNOLÓGICO<span class="hero-stop">.</span></h2><p class="skills-intro">Tecnologías que utilizo y estudio. No se trata de saberlo todo, sino de seguir aprendiendo y construir bien.</p></div><div class="skill-panels reveal"><div class="skill-panel"><span class="mono skill-label">01 / LENGUAJES</span><div class="skill-chips"><span>Java</span><span>JavaScript</span><span>Python</span><span>SQL</span></div></div><div class="skill-panel"><span class="mono skill-label">02 / DESARROLLO WEB</span><div class="skill-chips"><span>HTML5</span><span>CSS3</span><span>DOM</span><span>APIs REST</span></div></div><div class="skill-panel"><span class="mono skill-label">03 / BACKEND Y DATOS</span><div class="skill-chips"><span>Spring Boot</span><span>APIs REST</span><span>MySQL</span><span>PostgreSQL</span></div></div><div class="skill-panel"><span class="mono skill-label">04 / HERRAMIENTAS DE DESARROLLO</span><div class="skill-chips"><span>NetBeans</span><span>IntelliJ IDEA</span><span>DBeaver</span><span>VS Code</span></div></div>
+        <div class="skill-panel"><span class="mono skill-label">05 / METODOLOGÍA Y FLUJO</span><div class="skill-chips"><span>Git & GitHub</span><span>Scrum</span><span>PSeInt · pseudocódigo</span><span>IA aplicada</span></div></div></div></div>
 
       <div class="people-skills reveal" aria-label="Habilidades interpersonales">
         <span class="mono">/ HABILIDADES HUMANAS</span>
@@ -275,22 +278,27 @@
           <p>Selecciona una tecnología o herramienta y descubre cómo se conecta con lo que estoy aprendiendo y construyendo. Las líneas aparecen mientras avanzas.</p>
         </div>
         <div class="skill-network-map">
-          <svg viewBox="0 0 900 400" class="skill-network-lines" preserveAspectRatio="none" aria-hidden="true">
-            <path pathLength="1" d="M450 204 L117 76 M450 204 L351 76 M450 204 L765 76 M450 204 L117 204 M450 204 L765 204 M450 204 L117 332 M450 204 L351 332 M450 204 L585 332 M450 204 L783 332 M117 76 L117 204 L117 332 M765 76 L765 204 L783 332"/>
+          <svg viewBox="0 0 1000 480" class="skill-network-lines" preserveAspectRatio="none" aria-hidden="true">
+            <path pathLength="1" d="M120 91 L310 91 M310 91 L500 91 M500 91 L690 91 M690 91 L880 91 M120 245 L310 245 M310 245 L500 245 M500 245 L690 245 M690 245 L880 245 M120 394 L310 394 M310 394 L500 394 M500 394 L690 394 M690 394 L880 394 M120 91 L120 245 M120 245 L120 394 M310 91 L310 245 M310 245 L310 394 M500 91 L500 245 M500 245 L500 394 M690 91 L690 245 M690 245 L690 394 M880 91 L880 245 M880 245 L880 394 M310 91 L500 245 M500 91 L690 245 M690 245 L880 394 M120 245 L310 394"/>
           </svg>
-          <button type="button" class="skill-node" data-skill-key="java" style="--nx:13%;--ny:19%" aria-pressed="false"><span>01</span><strong>JAVA</strong></button>
-          <button type="button" class="skill-node" data-skill-key="python" style="--nx:39%;--ny:19%" aria-pressed="false"><span>02</span><strong>PYTHON</strong></button>
-          <button type="button" class="skill-node" data-skill-key="spring" style="--nx:85%;--ny:19%" aria-pressed="false"><span>03</span><strong>SPRING</strong></button>
-          <button type="button" class="skill-node" data-skill-key="sql" style="--nx:13%;--ny:51%" aria-pressed="false"><span>04</span><strong>SQL</strong></button>
-          <button type="button" class="skill-node" data-skill-key="javascript" style="--nx:50%;--ny:51%" aria-pressed="true"><span>05</span><strong>JAVASCRIPT</strong></button>
-          <button type="button" class="skill-node" data-skill-key="ia" style="--nx:85%;--ny:51%" aria-pressed="false"><span>06</span><strong>IA</strong></button>
-          <button type="button" class="skill-node" data-skill-key="pseint" style="--nx:13%;--ny:83%" aria-pressed="false"><span>07</span><strong>PSeInt</strong></button>
-          <button type="button" class="skill-node" data-skill-key="scrum" style="--nx:39%;--ny:83%" aria-pressed="false"><span>08</span><strong>SCRUM</strong></button>
-          <button type="button" class="skill-node" data-skill-key="github" style="--nx:65%;--ny:83%" aria-pressed="false"><span>09</span><strong>GITHUB</strong></button>
-          <button type="button" class="skill-node" data-skill-key="htmlcss" style="--nx:87%;--ny:83%" aria-pressed="false"><span>10</span><strong>HTML / CSS</strong></button>
+          <button type="button" class="skill-node" data-skill-key="java" style="--nx:12%;--ny:19%" aria-pressed="false"><span>01</span><strong>JAVA</strong></button>
+          <button type="button" class="skill-node" data-skill-key="javascript" style="--nx:31%;--ny:19%" aria-pressed="true"><span>02</span><strong>JAVASCRIPT</strong></button>
+          <button type="button" class="skill-node" data-skill-key="python" style="--nx:50%;--ny:19%" aria-pressed="false"><span>03</span><strong>PYTHON</strong></button>
+          <button type="button" class="skill-node" data-skill-key="sql" style="--nx:69%;--ny:19%" aria-pressed="false"><span>04</span><strong>SQL</strong></button>
+          <button type="button" class="skill-node" data-skill-key="spring" style="--nx:88%;--ny:19%" aria-pressed="false"><span>05</span><strong>SPRING BOOT</strong></button>
+          <button type="button" class="skill-node" data-skill-key="postgres" style="--nx:12%;--ny:51%" aria-pressed="false"><span>06</span><strong>POSTGRESQL</strong></button>
+          <button type="button" class="skill-node" data-skill-key="mysql" style="--nx:31%;--ny:51%" aria-pressed="false"><span>07</span><strong>MYSQL</strong></button>
+          <button type="button" class="skill-node" data-skill-key="dbeaver" style="--nx:50%;--ny:51%" aria-pressed="false"><span>08</span><strong>DBEAVER</strong></button>
+          <button type="button" class="skill-node" data-skill-key="pseint" style="--nx:69%;--ny:51%" aria-pressed="false"><span>09</span><strong>PSeInt</strong></button>
+          <button type="button" class="skill-node" data-skill-key="ia" style="--nx:88%;--ny:51%" aria-pressed="false"><span>10</span><strong>IA</strong></button>
+          <button type="button" class="skill-node" data-skill-key="netbeans" style="--nx:12%;--ny:82%" aria-pressed="false"><span>11</span><strong>NETBEANS</strong></button>
+          <button type="button" class="skill-node" data-skill-key="intellij" style="--nx:31%;--ny:82%" aria-pressed="false"><span>12</span><strong>INTELLIJ</strong></button>
+          <button type="button" class="skill-node" data-skill-key="github" style="--nx:50%;--ny:82%" aria-pressed="false"><span>13</span><strong>GITHUB</strong></button>
+          <button type="button" class="skill-node" data-skill-key="scrum" style="--nx:69%;--ny:82%" aria-pressed="false"><span>14</span><strong>SCRUM</strong></button>
+          <button type="button" class="skill-node" data-skill-key="htmlcss" style="--nx:88%;--ny:82%" aria-pressed="false"><span>15</span><strong>HTML/CSS</strong></button>
         </div>
         <div class="skill-network-detail" id="skillNetworkDetail" role="status" aria-live="polite">
-          <span class="mono">05 / JAVASCRIPT</span>
+          <span class="mono">02 / JAVASCRIPT</span>
           <p>Interfaces interactivas, proyectos web y lógica del navegador. Proyectos: Acme School, Cola Virtual y este portafolio.</p>
         </div>
       </div>
