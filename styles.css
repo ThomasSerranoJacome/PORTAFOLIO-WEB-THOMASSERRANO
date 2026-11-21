@@ -622,3 +622,137 @@ html.intro-pending .intro-track span{animation:introLoad 3.05s linear both;}
  html.intro-pending body > :not(.intro-overlay){visibility:visible!important;animation:none!important;}
  html.intro-pending .intro-overlay{display:none!important;animation:none!important;}
 }
+
+
+/* ===============================================================
+   V10 / IMMERSIVE SCROLL · CINEMATIC + TECH NETWORK + SHOWCASE
+   =============================================================== */
+/* 01 — El símbolo TSJ se aleja y se convierte en insignia */
+.cinema-enabled.scroll-story-active .cinema-world{
+  transform:translate3d(0,var(--story-y,0px),0) scale(var(--story-scale,1))
+    rotateY(calc(var(--cinema-rotate-y,0deg) + var(--story-turn,0deg)))
+    rotateX(var(--cinema-rotate-x,0deg));
+  transition:transform .13s linear,opacity .2s;
+}
+.scroll-story-active .identity-panel{scale:var(--story-classic-scale,1);}
+.scroll-story-active .hero-copy{transform:translateY(var(--story-copy-y,0px));opacity:var(--story-copy-opacity,1);}
+.scroll-emblem{
+  position:fixed;left:23px;bottom:22px;z-index:45;display:flex;align-items:center;gap:10px;
+  background:#07152beF;border:1px solid #3563ac;border-radius:5px;
+  padding:10px 13px;color:#f6faff;box-shadow:0 12px 30px #000a;
+  pointer-events:none;opacity:0;transform:translateY(15px) scale(.82);
+  transition:opacity .22s ease,transform .22s ease;
+}
+.scroll-emblem span{font:900 27px/.85 var(--title);letter-spacing:-.06em;text-shadow:0 0 18px #417dff70;}
+.scroll-emblem b{color:#6494ff;}
+.scroll-emblem small{font:700 9px var(--mono);letter-spacing:.05em;color:#91b4ed;}
+.scroll-emblem.is-visible{opacity:1;transform:translateY(0) scale(1);}
+
+/* 02 — Campus Pulse muestra estados conceptuales controlados por scroll. */
+.campus-story{margin-top:12px;border-top:1px solid #345783;padding-top:14px;}
+.campus-story-options{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px;}
+.campus-story-button{font:700 9px var(--mono);padding:9px 10px;cursor:pointer;border:1px solid #385b91;border-radius:3px;background:#0b1b37;color:#91abd6;transition:background .2s,color .2s,border-color .2s;}
+.campus-story-button.is-selected,.campus-story-button:hover{background:#2855a0;border-color:#79a5f5;color:#fff;}
+.campus-story-button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+.campus-story-data{display:grid;gap:6px;min-height:58px;}
+.campus-story-data .mono{font-size:9px;color:#87aff6;}
+.campus-story-data>span:last-child{font:500 11px/1.55 var(--body);color:#dce8ff;}
+.campus-story>small{display:block;margin-top:12px;color:#7693bd;font:400 9px/1.5 var(--mono);}
+.campus-plan-grid .room{transition:background .45s ease,border-color .45s ease,color .45s ease,box-shadow .45s ease;}
+.campus-plan[data-campus-active="0"] .room:nth-child(1),.campus-plan[data-campus-active="0"] .room:nth-child(4){background:#2d62ad;border-color:#94baff;box-shadow:inset 0 0 24px #6098ff35;}
+.campus-plan[data-campus-active="1"] .room:nth-child(2),.campus-plan[data-campus-active="1"] .room:nth-child(6){background:#206d78;border-color:#56d0c8;color:#e8fffa;box-shadow:0 0 12px #52c6d34d;}
+.campus-plan[data-campus-active="2"] .room:nth-child(3){background:#78466a;border-color:#dfa0bf;color:#fff;box-shadow:0 0 18px #b8569d44;}
+.campus-plan[data-campus-active="2"] .room:nth-child(5){background:#553e70;border-color:#ad91d6;}
+
+/* 03 — Carril horizontal que se vincula al desplazamiento vertical. */
+.project-gallery{position:relative;margin:35px 0 16px;min-width:0;}
+.project-gallery-head{display:flex;justify-content:space-between;gap:14px;margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid #335387;color:#95b5e9;font-size:10px;}
+.project-gallery-head span:last-child{color:#f7faff;}
+.project-gallery-sticky{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-color:#4775bd #0d1d34;}
+.project-gallery-track{display:flex;align-items:stretch;gap:26px;min-width:0;padding:8px 8px 20px 1px;transform:translateZ(0);}
+.project-gallery-track>.project-card{flex:0 0 clamp(320px,42vw,590px);min-width:0;scroll-snap-align:start;}
+.project-gallery-track .project-preview{height:clamp(250px,29vw,370px);}
+.project-gallery-track .project-info{min-height:200px;}
+.project-gallery-footer{height:3px;background:#1d365f;margin:12px 0 5px;overflow:hidden;border-radius:9px;}
+.project-gallery-footer>span{display:block;width:100%;height:100%;transform:scaleX(var(--rail-progress,.05));transform-origin:left;background:linear-gradient(90deg,#316bff,#91aaff);}
+.project-gallery.is-scroll-driven .project-gallery-sticky{position:sticky;top:96px;overflow:hidden;scroll-snap-type:none;}
+.project-gallery.is-scroll-driven .project-gallery-track{transform:translate3d(var(--rail-x,0px),0,0);will-change:transform;}
+.project-gallery.is-scroll-driven .project-gallery-track>.project-card{scroll-snap-align:none;}
+.project-gallery:not(.is-scroll-driven) .project-gallery-footer{display:none;}
+
+/* 04 — Red de tecnologías interactiva. */
+.skill-network{margin-top:70px;padding:clamp(24px,3.5vw,45px);border:1px solid #345b94;border-radius:4px;background:radial-gradient(ellipse at 50% 42%,#16315d99,transparent 70%),linear-gradient(148deg,#091528,#0b1d35);box-shadow:10px 12px 0 #050e1e;--network-progress:1;}
+.skill-network-heading{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:24px;}
+.skill-network-heading>div{flex:1;}
+.skill-network-heading .mono{font-size:10px;color:#7aa5f9;}
+.skill-network-heading h3{margin:12px 0 0;font:800 clamp(43px,5.8vw,85px)/.91 var(--title);letter-spacing:-.03em;color:#fff;}
+.skill-network-heading h3 span{color:#6d9aff;}
+.skill-network-heading p{flex:0 1 350px;margin:0;color:#b1c4e1;font:400 13px/1.7 var(--body);}
+.skill-network-map{height:clamp(290px,34vw,410px);position:relative;isolation:isolate;border:1px solid #345784;background:radial-gradient(ellipse at 50% 50%,#1e447073,transparent 64%),linear-gradient(145deg,#071020,#112444);overflow:hidden;}
+.skill-network-map:before{content:"";position:absolute;inset:0;opacity:.35;background-image:linear-gradient(#4971aa29 1px,transparent 1px),linear-gradient(90deg,#4971aa29 1px,transparent 1px);background-size:38px 38px;pointer-events:none;}
+.skill-network-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.skill-network-lines path{fill:none;stroke:#6098fa;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.7;vector-effect:non-scaling-stroke;}
+.scroll-story-active .skill-network-lines path{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--network-progress,1));}
+.skill-node{position:absolute;left:var(--nx);top:var(--ny);transform:translate(-50%,-50%);display:grid;gap:4px;min-width:110px;padding:13px 14px;text-align:left;border:1px solid #3e64a2;background:#0b2041f5;color:#e9f1ff;border-radius:4px;box-shadow:0 7px 20px #020916b9;cursor:pointer;transition:background .23s,transform .23s,border-color .23s,box-shadow .23s;}
+.skill-node span{font:700 9px var(--mono);color:#709ff2;}
+.skill-node strong{font:800 16px var(--title);letter-spacing:.04em;}
+.skill-node[aria-pressed="true"],.skill-node:hover{background:#234c95;color:#fff;border-color:#88b2ff;box-shadow:0 0 22px #2d6eee55;transform:translate(-50%,-50%) scale(1.09);}
+.skill-node:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+.skill-network-detail{border:1px solid #345b91;border-top:0;background:#0c1c36;padding:17px 21px;min-height:89px;}
+.skill-network-detail .mono{font-size:10px;color:#8cafef;}
+.skill-network-detail p{margin:9px 0 0;font:400 13px/1.65 var(--body);color:#e5edfa;}
+
+/* 05 — Portales discretos entre capítulos clave, controlados por scroll. */
+.chapter-portal{--portal-progress:.5;position:relative;height:clamp(140px,17vw,240px);overflow:hidden;isolation:isolate;display:grid;place-items:center;background:linear-gradient(180deg,#081121,#0a1b37 48%,#0d1629);pointer-events:none;}
+.chapter-portal-light{position:absolute;width:min(85vw,680px);height:110%;background:radial-gradient(ellipse at 50% 50%,#3878e94a,transparent 65%);filter:blur(20px);opacity:.7;}
+.chapter-portal-ring{position:absolute;width:min(50vw,340px);height:min(50vw,340px);border:1px solid #5489edaa;border-radius:50%;box-shadow:0 0 20px #3d7ae43c;transform:scale(calc(.50 + var(--portal-progress)*.9)) rotate(calc(var(--portal-progress)*55deg));opacity:calc(.35 + var(--portal-progress)*.5);}
+.chapter-portal-ring--inner{width:min(31vw,230px);height:min(31vw,230px);border:1px dashed #a0a4ff8a;transform:scale(calc(.38 + var(--portal-progress)*1.2)) rotate(calc(var(--portal-progress)*-85deg));}
+.chapter-portal-caption{position:relative;z-index:2;font-size:10px;letter-spacing:.2em;color:#a5c8ff;text-shadow:0 0 20px #102450;}
+
+/* Respetar el interruptor de efectos y la preferencia del visitante. */
+.motion-paused .scroll-emblem{display:none;}
+.motion-paused .cinema-world{transform:none!important;}
+.motion-paused .identity-panel{scale:1!important;}
+.motion-paused .hero-copy{transform:none!important;opacity:1!important;}
+.motion-paused .skill-network-lines path{stroke-dashoffset:0!important;}
+.motion-paused .chapter-portal-ring{transform:none!important;opacity:.6!important;}
+.motion-paused .project-gallery-track{transform:none!important;will-change:auto!important;}
+@media(max-width:1100px){
+ .project-gallery-track>.project-card{flex-basis:min(72vw,570px);}
+ .skill-node{min-width:102px;padding:12px;}
+}
+@media(max-width:900px){
+ .scroll-emblem{display:none;}
+ .project-gallery-track>.project-card{flex-basis:min(78vw,520px);}
+ .skill-network-heading{display:block;}
+ .skill-network-heading p{max-width:620px;margin-top:17px;}
+ .skill-node strong{font-size:14px;}
+}
+@media(max-width:760px){
+ .skill-network{margin-top:48px;padding:18px;box-shadow:5px 6px 0 #050e1e;}
+ .skill-network-map{height:auto;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:14px;}
+ .skill-network-lines{display:none;}
+ .skill-node{position:relative;left:auto;top:auto;transform:none!important;width:100%;min-width:0;}
+ .skill-node[aria-pressed="true"],.skill-node:hover{transform:none!important;}
+ .skill-network-detail{padding:15px;}
+ .project-gallery{height:auto!important;}
+ .project-gallery-sticky{position:static!important;overflow-x:visible;}
+ .project-gallery-track{display:grid;grid-template-columns:1fr;gap:24px;padding:5px 0;transform:none!important;}
+ .project-gallery-track>.project-card{width:auto;min-width:0;max-width:none;flex-basis:auto;}
+ .project-gallery-track .project-preview{height:300px;}
+ .project-gallery-head{font-size:9px;}
+ .project-gallery-footer{display:none;}
+ .campus-story-button{font-size:8px;padding:8px 7px;}
+ .chapter-portal{height:140px;}
+ .chapter-portal-ring{width:230px;height:230px;}
+ .chapter-portal-ring--inner{width:155px;height:155px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .cinema-world,.identity-panel,.hero-copy,.project-gallery-track{transform:none!important;scale:1!important;opacity:1!important;}
+ .scroll-emblem{display:none!important;}
+ .skill-network-lines path{stroke-dashoffset:0!important;stroke-dasharray:none!important;}
+ .chapter-portal-ring{transform:none!important;opacity:.6!important;}
+ .room{transition:none!important;}
+ .project-gallery{height:auto!important;}
+ .project-gallery-sticky{position:static!important;overflow-x:auto!important;}
+}
