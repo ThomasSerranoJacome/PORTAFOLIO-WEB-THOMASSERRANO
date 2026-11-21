@@ -384,7 +384,7 @@ renderGame();
 })();
 
 
-// V9 / CINEMATIC INTRO — accesible, una vez por pestaña, sin dependencias.
+// V14 / CINEMATIC INTRO — accesible, en cada carga, sin dependencias.
 (() => {
   if (!document.documentElement.classList.contains('intro-pending')) return;
   const overlay = document.querySelector('#introOverlay');
@@ -400,7 +400,6 @@ renderGame();
     document.removeEventListener('keydown', onIntroKey);
     document.documentElement.classList.remove('intro-pending');
     overlay.hidden = true;
-    try { sessionStorage.setItem('tsj-intro-seen-v9', '1'); } catch (_) {}
     if (document.activeElement === skip) {
       const hero = document.querySelector('#heroTitle');
       if (hero) { hero.setAttribute('tabindex', '-1'); hero.focus({ preventScroll: true }); }
