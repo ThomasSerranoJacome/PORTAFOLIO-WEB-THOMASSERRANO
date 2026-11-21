@@ -196,3 +196,105 @@ renderGame();
     if (event.key === 'Escape' && document.activeElement === field) field.blur();
   });
 })();
+
+
+// SCROLL STORIES / V7 — progreso, secciones activas y revelados progresivos.
+(() => {
+  const progress = document.querySelector('#siteProgressBar');
+  const chapterNo = document.querySelector('#scrollChapterNo');
+  const chapterName = document.querySelector('#scrollChapterName');
+  const toggle = document.querySelector('#motionToggle');
+  const toggleState = document.querySelector('#motionToggleState');
+  const chapters = [
+    ['inicio', 'INICIO'], ['terminal', 'TERMINAL'],
+    ['sobre-mi', 'SOBRE MÍ'], ['proyectos', 'PROYECTOS'],
+    ['habilidades', 'STACK'], ['servicios', 'SERVICIOS'],
+    ['arcade', 'ARCADE'], ['contacto', 'CONTACTO']
+  ].map(([id, name]) => ({ element: document.getElementById(id), id, name }))
+   .filter((item) => item.element);
+  if (!progress || !toggle || !chapters.length) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let effectsOn = !prefersReduced.matches;
+  let currentId = '';
+
+  function updateEffects() {
+    document.body.classList.toggle('motion-paused', !effectsOn);
+    toggle.setAttribute('aria-pressed', String(effectsOn));
+    toggle.setAttribute('aria-label', effectsOn ? 'Desactivar efectos de movimiento' : 'Activar efectos de movimiento');
+    toggleState.textContent = effectsOn ? 'ON' : 'OFF';
+  }
+  updateEffects();
+  toggle.addEventListener('click', () => { effectsOn = !effectsOn; updateEffects(); });
+
+  const observed = [
+    ...document.querySelectorAll('.section-kicker, .service-item, .skill-panel, .project-card, .contact-bottom, .identity-facts')
+  ].filter((element) => !element.classList.contains('reveal'));
+  if ('IntersectionObserver' in window && !prefersReduced.matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('motion-in');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+
+    observed.forEach((element, i) => {
+      element.classList.add('motion-item');
+      if (element.classList.contains('section-kicker')) element.classList.add(i % 2 ? 'motion-from-right' : 'motion-from-left');
+      if (element.classList.contains('project-card')) element.classList.add('motion-scale');
+      observer.observe(element);
+    });
+  }
+
+  let scheduled = false;
+  function updateScroll() {
+    scheduled = false;
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const percent = Math.min(1, Math.max(0, window.scrollY / max));
+    progress.style.transform = 'scaleX(' + percent + ')';
+
+    let current = chapters[0];
+    const guide = window.innerHeight * 0.42;
+    chapters.forEach((chapter) => {
+      if (chapter.element.getBoundingClientRect().top <= guide) current = chapter;
+    });
+    if (current.id !== currentId) {
+      currentId = current.id;
+      chapters.forEach((chapter) => chapter.element.classList.toggle('is-current', chapter.id === current.id));
+      chapterNo.textContent = String(chapters.indexOf(current) + 1).padStart(2, '0') + ' / ' + String(chapters.length).padStart(2, '0');
+      chapterName.textContent = current.name;
+      document.querySelectorAll('#navLinks a[href^="#"]').forEach((link) => {
+        if (link.getAttribute('href') === '#' + current.id) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
+    if (effectsOn && !prefersReduced.matches && window.innerWidth > 760) {
+      const panel = document.querySelector('.identity-panel');
+      if (panel) panel.style.setProperty('--hero-parallax', Math.min(22, Math.max(0, window.scrollY * 0.06)).toFixed(1) + 'px');
+    }
+  }
+  function onScroll() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(updateScroll);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  window.addEventListener('load', onScroll);
+  onScroll();
+
+  const previews = document.querySelectorAll('.project-preview');
+  previews.forEach((preview) => {
+    preview.addEventListener('pointermove', (event) => {
+      if (!effectsOn || prefersReduced.matches || event.pointerType === 'touch') return;
+      const bounds = preview.getBoundingClientRect();
+      preview.style.setProperty('--glow-x', ((event.clientX - bounds.left) / bounds.width * 100).toFixed(1) + '%');
+      preview.style.setProperty('--glow-y', ((event.clientY - bounds.top) / bounds.height * 100).toFixed(1) + '%');
+    }, { passive: true });
+    preview.addEventListener('pointerleave', () => {
+      preview.style.removeProperty('--glow-x');
+      preview.style.removeProperty('--glow-y');
+    });
+  });
+})();
