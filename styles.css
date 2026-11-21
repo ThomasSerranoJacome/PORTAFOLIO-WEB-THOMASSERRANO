@@ -705,8 +705,8 @@ html.intro-pending .intro-track span{animation:introLoad 3.05s linear both;}
 /* 05 — Portales discretos entre capítulos clave, controlados por scroll. */
 .chapter-portal{--portal-progress:.5;position:relative;height:clamp(140px,17vw,240px);overflow:hidden;isolation:isolate;display:grid;place-items:center;background:linear-gradient(180deg,#081121,#0a1b37 48%,#0d1629);pointer-events:none;}
 .chapter-portal-light{position:absolute;width:min(85vw,680px);height:110%;background:radial-gradient(ellipse at 50% 50%,#3878e94a,transparent 65%);filter:blur(20px);opacity:.7;}
-.chapter-portal-ring{position:absolute;width:min(50vw,340px);height:min(50vw,340px);border:1px solid #5489edaa;border-radius:50%;box-shadow:0 0 20px #3d7ae43c;transform:scale(calc(.50 + var(--portal-progress)*.9)) rotate(calc(var(--portal-progress)*55deg));opacity:calc(.35 + var(--portal-progress)*.5);}
-.chapter-portal-ring--inner{width:min(31vw,230px);height:min(31vw,230px);border:1px dashed #a0a4ff8a;transform:scale(calc(.38 + var(--portal-progress)*1.2)) rotate(calc(var(--portal-progress)*-85deg));}
+.chapter-portal-ring{position:absolute;width:min(50vw,340px);height:min(50vw,340px);border:1px solid #5489edaa;border-radius:50%;box-shadow:0 0 20px #3d7ae43c;transform:scale(var(--portal-scale,.95)) rotate(var(--portal-rotation,26deg));opacity:var(--portal-opacity,.7);}
+.chapter-portal-ring--inner{width:min(31vw,230px);height:min(31vw,230px);border:1px dashed #a0a4ff8a;transform:scale(var(--portal-inner-scale,1)) rotate(var(--portal-inner-rotation,-43deg));}
 .chapter-portal-caption{position:relative;z-index:2;font-size:10px;letter-spacing:.2em;color:#a5c8ff;text-shadow:0 0 20px #102450;}
 
 /* Respetar el interruptor de efectos y la preferencia del visitante. */
