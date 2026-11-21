@@ -298,3 +298,87 @@ renderGame();
     });
   });
 })();
+
+
+// V8 / CINEMATIC 3D — perspectiva real en CSS, sin WebGL ni dependencias.
+(() => {
+  const stage = document.querySelector('#cinemaStage');
+  const world = document.querySelector('#cinemaWorld');
+  const toggle = document.querySelector('#cinemaToggle');
+  const explorer = document.querySelector('#cinemaExplore');
+  const visual = document.querySelector('.hero-visual--editorial');
+  if (!stage || !world || !toggle || !visual) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const suitableDesktop = window.matchMedia('(min-width: 761px) and (pointer: fine)');
+  let enabled = suitableDesktop.matches && !reducedMotion.matches;
+  let visible = true;
+  let pointerPending = false;
+  let pointX = 0;
+  let pointY = 0;
+
+  function resetRotation() {
+    world.style.setProperty('--cinema-rotate-x', '0deg');
+    world.style.setProperty('--cinema-rotate-y', '0deg');
+  }
+
+  function canAnimate() {
+    return enabled && visible && !reducedMotion.matches && !document.body.classList.contains('motion-paused') && !document.hidden;
+  }
+
+  function syncState() {
+    document.body.classList.toggle('cinema-enabled', enabled);
+    toggle.textContent = enabled ? 'VISTA CLÁSICA ↙' : 'ACTIVAR VISTA 3D ↗';
+    toggle.setAttribute('aria-pressed', String(enabled));
+    toggle.setAttribute('aria-label', enabled ? 'Volver a la portada clásica' : 'Activar portada tridimensional');
+    stage.setAttribute('aria-hidden', 'true');
+    stage.classList.toggle('cinema-sleep', !canAnimate());
+    if (!canAnimate()) resetRotation();
+  }
+
+  toggle.addEventListener('click', () => {
+    enabled = !enabled;
+    syncState();
+  });
+
+  // Sin animación fuera de la pantalla: ahorra CPU y batería.
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      visible = entries.some((entry) => entry.isIntersecting);
+      syncState();
+    }, { threshold: 0.02 });
+    observer.observe(visual);
+  }
+
+  visual.addEventListener('pointermove', (event) => {
+    if (!canAnimate() || event.pointerType !== 'mouse') return;
+    const rect = visual.getBoundingClientRect();
+    pointX = ((event.clientX - rect.left) / rect.width - 0.5) * 15;
+    pointY = (0.5 - (event.clientY - rect.top) / rect.height) * 11;
+    if (pointerPending) return;
+    pointerPending = true;
+    requestAnimationFrame(() => {
+      pointerPending = false;
+      if (!canAnimate()) return;
+      world.style.setProperty('--cinema-rotate-y', pointX.toFixed(2) + 'deg');
+      world.style.setProperty('--cinema-rotate-x', pointY.toFixed(2) + 'deg');
+    });
+  }, { passive: true });
+  visual.addEventListener('pointerleave', resetRotation);
+
+  if (explorer) {
+    explorer.addEventListener('click', () => {
+      if (!canAnimate()) return;
+      visual.classList.add('cinema-exiting');
+      window.setTimeout(() => visual.classList.remove('cinema-exiting'), 600);
+    });
+  }
+
+  document.addEventListener('visibilitychange', syncState);
+  reducedMotion.addEventListener?.('change', () => {
+    if (reducedMotion.matches) enabled = false;
+    syncState();
+  });
+  new MutationObserver(syncState).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  syncState();
+})();
