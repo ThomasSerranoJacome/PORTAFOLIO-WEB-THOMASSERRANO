@@ -625,3 +625,156 @@ renderGame();
   desktop.addEventListener?.('change', onLayoutChange);
   onLayoutChange();
 })();
+
+
+// V11 / PROJECT EXPERIENCE — fichas inmersivas con contenido verificable.
+(() => {
+  const modal = document.getElementById('projectDetail');
+  if (!modal || typeof modal.showModal !== 'function') return;
+
+  const order = ['campus', 'acme', 'cola', 'matchup'];
+  const projects = {
+    campus: {
+      title: 'Campus Pulse', kicker: '01 / HACKATÓN · EQUIPO',
+      visual: 'CAMPUS<br>PULSE<span>.</span>', type: '01 / CAMPUSLANDS · HACKATÓN',
+      intro: 'Una aplicación colaborativa para organizar espacios y recursos de Campuslands.',
+      overview: 'El proyecto reúne un mapa de espacios, reservas, recursos e incidencias, además de funciones asistidas por IA. Fue desarrollado en equipo durante una hackatón.',
+      contribution: 'Trabajé con los datos oficiales y participé en las pruebas de datos y fechas. Las demás funcionalidades pertenecen al trabajo colaborativo del equipo.',
+      tags: ['Node.js', 'Express', 'JavaScript', 'IA aplicada', 'QA y datos'],
+      note: 'Visualización ilustrativa. No se muestran capturas reales ni datos internos del campus.',
+      github: null
+    },
+    acme: {
+      title: 'Acme School', kicker: '02 / PLATAFORMA WEB',
+      visual: 'ACME<br>SCHOOL<span>.</span>', type: '02 / GESTIÓN EDUCATIVA',
+      intro: 'Plataforma web colaborativa orientada a usuarios y exámenes.',
+      overview: 'Proyecto de aplicación web enfocado en administrar usuarios y evaluaciones desde una interfaz de navegador.',
+      contribution: 'Participé en los módulos de gestión de usuarios y exámenes dentro del proyecto colaborativo.',
+      tags: ['JavaScript', 'HTML', 'CSS', 'Web Components'],
+      note: 'La portada es una representación conceptual; consulta el repositorio para conocer el código.',
+      github: 'https://github.com/ThomasSerranoJacome/ProyectoAcmeschool_JavaScript_Ca-izares_Serrano_Carvajal'
+    },
+    cola: {
+      title: 'Cola Virtual', kicker: '03 / SISTEMA DE GESTIÓN',
+      visual: 'COLA<br>VIRTUAL<span>.</span>', type: '03 / GESTIÓN DE TURNOS',
+      intro: 'Interfaz para solicitar y consultar turnos desde la web.',
+      overview: 'La experiencia permite solicitar un turno, consultar su estado y acceder a un panel de administración.',
+      contribution: 'El repositorio forma parte de mis proyectos de desarrollo web. Puedes revisar la implementación directamente desde el enlace público.',
+      tags: ['HTML', 'CSS', 'JavaScript', 'Interfaz web'],
+      note: 'La visualización es ilustrativa y no representa una captura de la aplicación.',
+      github: 'https://github.com/ThomasSerranoJacome/n8n-workflow'
+    },
+    matchup: {
+      title: 'MatchUp', kicker: '04 / EXPERIENCIA WEB',
+      visual: 'MATCH<br>UP<span>.</span>', type: '04 / CATÁLOGO WEB',
+      intro: 'Catálogo web visual dedicado a camisetas de fútbol.',
+      overview: 'Proyecto frontend que presenta productos deportivos en una experiencia responsive.',
+      contribution: 'Proyecto incluido en mi repositorio de GitHub como muestra de desarrollo de interfaces web.',
+      tags: ['HTML', 'CSS', 'Frontend', 'Diseño responsive'],
+      note: 'La portada visual es conceptual. El código real está disponible en GitHub.',
+      github: 'https://github.com/ThomasSerranoJacome/MatchUp-Pagina-Web-'
+    }
+  };
+
+  const get = (id) => document.getElementById(id);
+  let selected = 0;
+  let opener = null;
+
+  function renderDetail(key) {
+    const item = projects[key];
+    if (!item) return;
+    selected = order.indexOf(key);
+    get('detailCounter').textContent = String(selected + 1).padStart(2, '0') + ' / 04';
+    get('detailKicker').textContent = item.kicker;
+    get('detailTitle').textContent = item.title;
+    get('detailIntro').textContent = item.intro;
+    get('detailOverview').textContent = item.overview;
+    get('detailContribution').textContent = item.contribution;
+    get('detailVisualType').textContent = item.type;
+    get('detailVisualName').innerHTML = item.visual; // Texto HTML fijo definido arriba, no ingresado por el visitante.
+    get('detailVisual').dataset.projectKey = key;
+    get('detailNote').textContent = item.note;
+    const tags = get('detailTags');
+    tags.replaceChildren();
+    item.tags.forEach((technology) => {
+      const tag = document.createElement('span');
+      tag.textContent = technology;
+      tags.append(tag);
+    });
+    const code = get('detailCode');
+    const privateNote = get('detailPrivate');
+    code.hidden = !item.github;
+    privateNote.hidden = !!item.github;
+    if (item.github) code.href = item.github;
+    else code.removeAttribute('href');
+    modal.scrollTop = 0;
+  }
+
+  document.querySelectorAll('[data-project-open]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const key = button.dataset.projectOpen;
+      if (!projects[key]) return;
+      opener = button;
+      renderDetail(key);
+      if (!modal.open) modal.showModal();
+      get('detailClose').focus();
+    });
+  });
+  get('detailClose').addEventListener('click', () => modal.close());
+  get('detailPrev').addEventListener('click', () => renderDetail(order[(selected + order.length - 1) % order.length]));
+  get('detailNext').addEventListener('click', () => renderDetail(order[(selected + 1) % order.length]));
+  modal.addEventListener('click', (event) => { if (event.target === modal) modal.close(); });
+  modal.addEventListener('close', () => {
+    if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
+  });
+  modal.addEventListener('keydown', (event) => {
+    if (event.altKey || event.ctrlKey || event.metaKey || ['INPUT', 'TEXTAREA'].includes(event.target.tagName)) return;
+    if (event.key === 'ArrowRight') { event.preventDefault(); event.stopPropagation(); renderDetail(order[(selected + 1) % order.length]); }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); event.stopPropagation(); renderDetail(order[(selected + order.length - 1) % order.length]); }
+  });
+})();
+
+// V11 / CONTACT CENTER — prepara el mailto sin enviar ni almacenar datos.
+(() => {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const choices = Array.from(document.querySelectorAll('[data-contact-kind]'));
+  const subjects = {
+    contratar: 'Quiero conversar sobre un proyecto de software',
+    colaborar: 'Propuesta de colaboración',
+    consulta: 'Consulta desde tu portafolio'
+  };
+  const introductions = {
+    contratar: 'Me interesa contratar tus servicios para un proyecto.',
+    colaborar: 'Me gustaría hablar sobre una colaboración.',
+    consulta: 'Quiero hacerte una consulta.'
+  };
+  let selectedKind = 'contratar';
+
+  choices.forEach((button) => {
+    button.addEventListener('click', () => {
+      selectedKind = button.dataset.contactKind;
+      choices.forEach((choice) => {
+        const active = choice === button;
+        choice.classList.toggle('is-selected', active);
+        choice.setAttribute('aria-pressed', String(active));
+      });
+    });
+  });
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const message = document.getElementById('contactMessage').value.trim();
+    if (!name || !email || !message) return;
+    const body = 'Hola Thomas,\n\n' + introductions[selectedKind] +
+      '\n\nNombre: ' + name + '\nCorreo de contacto: ' + email +
+      '\n\nMi mensaje:\n' + message + '\n\nSaludos,\n' + name;
+    const link = 'mailto:thomasserranojacome@gmail.com?subject=' +
+      encodeURIComponent(subjects[selectedKind]) + '&body=' + encodeURIComponent(body);
+    window.location.href = link;
+    const status = document.getElementById('contactStatus');
+    status.textContent = 'Se intentó abrir tu aplicación de correo. Revisa el borrador y pulsa Enviar allí; esta web no envía ni guarda mensajes.';
+  });
+})();
