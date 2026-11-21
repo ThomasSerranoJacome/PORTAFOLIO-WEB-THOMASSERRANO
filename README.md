@@ -124,3 +124,17 @@ La web incluye una terminal funcional antes de la sección «Sobre mí». Permit
 - **Ctrl + K** (o **⌘ + K** en macOS): desplaza a la terminal y enfoca la entrada.
 
 La experiencia es 100 % **HTML, CSS y JavaScript puro**, sin servicios de terceros ni procesamiento de comandos arbitrarios. La terminal no envía el texto a ningún servidor. Se conserva el videojuego **Bug Hunt** y no se enlaza públicamente al repositorio privado de Campus Pulse.
+
+
+## Scroll Stories — transiciones y microinteracciones (versión 7)
+
+El portafolio incorpora una capa de movimiento progresivo sin frameworks:
+
+- **Barra de progreso superior** que acompaña el desplazamiento vertical.
+- **Indicador de capítulo activo** (Inicio, Terminal, Sobre mí, Proyectos, Stack, Servicios, Arcade y Contacto) y marcado automático de la navegación.
+- **Entradas por secciones**: encabezados, tecnologías y servicios aparecen al llegar a ellos, con variaciones de movimiento y retrasos sutiles.
+- **Proyectos interactivos** con iluminación suave siguiendo al cursor en dispositivos compatibles.
+- **Panel TSJ con leve movimiento de profundidad** en escritorio.
+- **Control «EFECTOS ON/OFF»** para desactivar animaciones; se respeta la preferencia del sistema `prefers-reduced-motion`.
+
+Los efectos son decorativos: la lectura, los enlaces, la terminal interactiva y **Bug Hunt** funcionan independientemente de ellos. No se instalaron dependencias adicionales.
