@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#060b16">
-  <meta name="portfolio-version" content="2026-11-21-v13">
+  <meta name="portfolio-version" content="2026-11-21-v14">
   <meta name="description" content="Portafolio de Thomas Serrano Jácome: desarrollo de software, experiencias web, proyectos y un minijuego interactivo.">
   <meta property="og:title" content="Thomas Serrano Jácome — Desarrollador de software">
   <meta property="og:description" content="Ideas en código. Explora mis proyectos, descubre lo que construyo y juega TSJ Arcade.">
@@ -15,21 +15,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&amp;family=Inter:wght@400;500;600;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <script>
-    // Intro una vez por pestaña; ?intro=1 permite reproducirla de nuevo.
+    // Reproducir la intro en cada carga, con respeto al movimiento reducido.
     (() => {
-      try {
-        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const deepLink = window.location.hash && window.location.hash !== '#inicio';
-        const replay = new URLSearchParams(window.location.search).get('intro') === '1';
-        const seen = sessionStorage.getItem('tsj-intro-seen-v9') === '1';
-        if (!reduced && !deepLink && (replay || !seen)) {
-          document.documentElement.classList.add('intro-pending');
-        }
-      } catch (_) { /* Sin almacenamiento, se presenta la web normalmente. */ }
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduced) document.documentElement.classList.add('intro-pending');
     })();
   </script>
   <link rel="stylesheet" href="./styles.css?v=20261121-13">
-  <script src="./main.js?v=20261121-13" defer></script>
+  <script src="./main.js?v=20261121-14" defer></script>
 </head>
 <body>
 
