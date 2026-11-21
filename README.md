@@ -158,11 +158,11 @@ Es 3D en CSS y no un motor WebGL; para una fase posterior podrían añadirse mod
 
 ## Entrada cinematográfica TSJ (V9 — noviembre de 2026)
 
-Al entrar por primera vez en una pestaña, se reproduce una intro de aprox. 3,8 segundos: el logo **TSJ** con anillos tridimensionales emerge del fondo, se amplía a gran tamaño y luego se minimiza para revelar el portafolio.
+Al abrir o recargar la página, se reproduce una intro de aprox. 3,8 segundos: el logo **TSJ** con anillos tridimensionales emerge del fondo, se amplía a gran tamaño y luego se minimiza para revelar el portafolio.
 
 - Animación mediante CSS 3D, reutilizando la identidad de la portada, sin nuevas dependencias.
-- Intro una vez por pestaña (`sessionStorage`); para reproducirla otra vez, usa el parámetro `?intro=1`.
-- No bloquea enlaces directos a otras secciones (`#proyectos`, `#terminal`, etc.).
+- La intro se reproduce en cada carga o recarga, sin depender de `sessionStorage`.
+- También se reproduce al cargar un enlace directo a otra sección; la navegación por anclas dentro de la página no reinicia la intro.
 - Botón **Saltar intro**, tecla **Escape** y foco de teclado al contenido principal.
 - Respeta `prefers-reduced-motion`; un fallback de CSS revela la web incluso si el JavaScript principal falla.
 - No elimina el modo clásico, la escena 3D existente, TSJ Terminal, Campus Pulse ni Bug Hunt.
@@ -223,3 +223,8 @@ A partir de las dos versiones de hoja de vida compartidas por el autor:
 - **Mi universo Tech** contiene ahora 15 nodos interactivos: Java, JavaScript, Python, SQL, Spring Boot, PostgreSQL, MySQL, DBeaver, PSeInt, IA aplicada, NetBeans, IntelliJ IDEA, GitHub, Scrum y HTML/CSS.
 - El mapa es una red animada en escritorio y una grilla táctil responsiva en dispositivos medianos y móviles.
 - Se conservaron intro, scroll narrativo, fichas de proyectos, centro de contacto, terminal y Bug Hunt.
+
+
+## V14 — Intro TSJ en cada carga
+
+La secuencia cinematográfica se reproduce cada vez que se abre o recarga el documento, incluso con una sección en la URL. Se conserva el botón Saltar intro, Escape y la preferencia de movimiento reducido.
