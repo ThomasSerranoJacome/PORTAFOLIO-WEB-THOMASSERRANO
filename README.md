@@ -201,3 +201,14 @@ Se conservaron la portada cinematográfica, scroll interactivo, TSJ Terminal, Bu
 - Los contenidos de las fichas se encuentran en el objeto `projects` dentro de `main.js`.
 - Los textos del centro de contacto se encuentran en `subjects` e `introductions`.
 - La presentación y los controles están en `index.html`, y los estilos en `styles.css`.
+
+
+## V12 — Habilidades contrastadas con los currículos Canva
+
+A partir de las dos versiones de hoja de vida compartidas por el autor:
+
+- Se añadieron **PSeInt** (pseudocódigo y algoritmos) y **Scrum** (metodología ágil) a la sección técnica.
+- Se amplió el mapa **Mi universo Tech** a 10 nodos: Java, Python, Spring Boot, SQL, JavaScript, IA aplicada, PSeInt, Scrum, GitHub y HTML/CSS. Python, JavaScript, SQL, HTML/CSS, IA y Git ya figuraban en el CV.
+- Se incorporaron las habilidades interpersonales explícitas de la hoja personal: comunicación efectiva, trabajo en equipo, adaptabilidad, aprendizaje rápido y organización.
+- Spring Boot se mantiene identificado como **en aprendizaje**, sin presentarlo como dominio experto.
+- Se conservaron enlaces, experiencia del proyecto Campus Pulse, fichas de la V11, la intro y la dinámica de scroll.
