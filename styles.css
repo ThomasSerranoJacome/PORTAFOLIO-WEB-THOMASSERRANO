@@ -1200,3 +1200,17 @@ body{background:#08121e;color:#f2f5fa;font-family:var(--body);}
 @media(prefers-reduced-motion:reduce){
   .hero .btn-dark:hover,.project-card:hover,.skill-chips>span:hover{transform:none!important;}
 }
+
+
+/* V15 / ajustes finales de composición para las vistas pequeñas */
+.projects .project-gallery .preview-wordmark{
+  font-size:clamp(54px,5.5vw,98px);line-height:.83;
+  letter-spacing:-.025em;max-width:100%;
+}
+.projects .campus-plan{transform:none;box-shadow:none;border-color:#4a6585;}
+.projects .project-featured .project-actions{padding-bottom:18px;}
+.projects .project-gallery .preview-header{line-height:1.5;}
+@media(max-width:640px){
+  .projects .project-gallery .preview-wordmark{font-size:clamp(59px,13vw,86px);}
+  .project-gallery-head span:last-child{display:inline;}
+}
