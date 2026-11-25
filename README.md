@@ -228,3 +228,18 @@ A partir de las dos versiones de hoja de vida compartidas por el autor:
 ## V14 — Intro TSJ en cada carga
 
 La secuencia cinematográfica se reproduce cada vez que se abre o recarga el documento, incluso con una sección en la URL. Se conserva el botón Saltar intro, Escape y la preferencia de movimiento reducido.
+
+
+## V15 — Quauro / Edición editorial (noviembre de 2026)
+
+Rediseño guiado por la skill personal **Quauro Dev Workbench** (disciplina de diseño + revisión técnica). Objetivo: que los proyectos y el trabajo real sean protagonistas, no los efectos decorativos.
+
+- **Recorrido:** portada → sobre mí → proyectos → stack → servicios → laboratorio (terminal) → arcade → contacto. Se quitó la franja animada de tecnologías.
+- **Jerarquía:** título grande en Barlow Condensed, copy breve, tipografía secundaria Inter y detalles Space Mono; paleta negro azulado, gris editorial y azul frío.
+- **Proyectos:** Campus Pulse sigue destacado con su representación conceptual y atribución real. Acme School, Cola Virtual y MatchUp aparecen juntos en una galería responsive; ya no hay scroll horizontal forzado.
+- **Habilidades:** las familias de tecnologías permanecen visibles y el mapa interactivo de 15 herramientas se despliega opcionalmente mediante `<details>`.
+- **Funciones conservadas:** intro TSJ en cada carga, escena 3D, modal de proyecto, terminal, minijuego y formulario `mailto:` (no envía automáticamente).
+- **Accesibilidad:** no se quitan etiquetas, validaciones, destinos ni soporte de movimiento reducido. El mapa opcional emplea controles nativos accesibles.
+- **Verificación ejecutada:** sintaxis JavaScript, etiquetas HTML, IDs únicos, anclas internas, presencia de destinos y assets versionados; no se realizó revisión visual de pantalla ni verificación independiente del despliegue público desde un navegador real.
+
+Estilo implementado como una capa CSS final `V15 / QUAURO EDITORIAL SYSTEM` para no alterar el comportamiento de los componentes existentes sin necesidad.
