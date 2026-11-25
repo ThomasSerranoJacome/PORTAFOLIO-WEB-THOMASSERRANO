@@ -504,23 +504,13 @@ renderGame();
   }));
   setCampusPhase(0);
 
+  // V15 / Editorial gallery: las fichas se muestran juntas, sin scroll horizontal forzado.
   function layoutGallery() {
     if (!gallery || !gallerySticky || !galleryTrack) return;
     gallery.classList.remove('is-scroll-driven');
     gallery.style.removeProperty('height');
     galleryTrack.style.removeProperty('--rail-x');
     galleryDistance = 0;
-    if (!animatedGallery()) return;
-
-    // Medir en el layout normal para que el carril funcione sin JavaScript.
-    const distance = Math.ceil(galleryTrack.scrollWidth - gallerySticky.clientWidth);
-    if (distance < 50) return;
-    galleryDistance = distance;
-    const galleryHead = gallery.querySelector('.project-gallery-head');
-    const headerHeight = galleryHead ? galleryHead.getBoundingClientRect().height + 16 : 0;
-    gallery.style.height = Math.ceil(gallerySticky.offsetHeight + distance + headerHeight + 115) + 'px';
-    gallery.classList.add('is-scroll-driven');
-    galleryStart = gallery.getBoundingClientRect().top + window.scrollY + headerHeight - 96;
   }
 
   function updateGallery() {
